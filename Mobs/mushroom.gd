@@ -67,7 +67,7 @@ func chase_state ():
 		sprite.flip_h = true
 		$AttakDirection.rotation_degrees = 180
 	else:
-		print(direction.x)
+		
 		sprite.flip_h = false
 		$AttakDirection.rotation_degrees = 0	
 

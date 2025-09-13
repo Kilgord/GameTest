@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://du6fkhgr3jg2k"]
+[gd_scene load_steps=98 format=3 uid="uid://du6fkhgr3jg2k"]
 
 [ext_resource type="Script" uid="uid://bsgobnoxc5oab" path="res://character_body_2d.gd" id="1_1kp85"]
 [ext_resource type="Texture2D" uid="uid://ds3j44fc0f0xu" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/RUN.png" id="1_lhvu3"]
@@ -757,8 +757,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ebjds"]
-length = 0.6
-loop_mode = 1
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -766,10 +765,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -866,6 +865,10 @@ tracks/1/keys = {
 "values": ["falen"]
 }
 
+[sub_resource type="Animation" id="Animation_b3etl"]
+length = 1.1
+loop_mode = 1
+
 [sub_resource type="Animation" id="Animation_73aya"]
 length = 0.875
 loop_mode = 1
@@ -961,6 +964,7 @@ _data = {
 &"damage": SubResource("Animation_wyqjk"),
 &"deathplayer": SubResource("Animation_k85er"),
 &"falen": SubResource("Animation_u71ia"),
+&"fire": SubResource("Animation_b3etl"),
 &"idle": SubResource("Animation_73aya"),
 &"jump": SubResource("Animation_l0yec"),
 &"walk": SubResource("Animation_ntjw6")
@@ -980,9 +984,8 @@ shape = SubResource("RectangleShape2D_ij6vw")
 position = Vector2(3.63798e-12, -2)
 scale = Vector2(0.351873, 0.366451)
 sprite_frames = SubResource("SpriteFrames_4sjlk")
-animation = &"attack3"
+animation = &"Run"
 autoplay = "idle"
-frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6.24, 6.24)
