@@ -125,7 +125,7 @@ func move_state ():
 	if 	Input.is_action_just_pressed("fire"):
 		state = FIRE	
 		
-
+#super testing
 func fire_state ():
 	print("fire")	
 		

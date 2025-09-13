@@ -1,9 +1,2 @@
-res://node_2d.tscn
-res://main_menu.tscn
 res://character_body_2d.tscn
-res://mob_body_2d.tscn
-res://gold.tscn
-res://Build/shop.tscn
-res://Mobs/mushroom.tscn
-res://DamageBox/damage_box.tscn
-res://mob_health.tscn
+res://character_body_2d.gd
