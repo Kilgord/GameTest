@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv53o6gojaist"]
+
+[ext_resource type="Script" uid="uid://ctaiv0h02tkws" path="res://mob_health.gd" id="1_rdir2"]
+[ext_resource type="Texture2D" uid="uid://cafwryik8lfug" path="res://art/Sprites/Sprite-0003.png" id="1_ydpj5"]
+[ext_resource type="Texture2D" uid="uid://yutf5icyp7uf" path="res://art/Sprites/Sprite-0002.png" id="2_rdir2"]
+
+[sub_resource type="Animation" id="Animation_rdir2"]
+resource_name = "damage_text"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-28, -59), Vector2(-29, -86)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bqydb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28, -59)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dryh"]
+_data = {
+&"RESET": SubResource("Animation_bqydb"),
+&"damage_text": SubResource("Animation_rdir2")
+}
+
+[node name="MobHealth" type="Node2D"]
+script = ExtResource("1_rdir2")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -52.0
+offset_top = -12.0
+offset_right = 52.0
+offset_bottom = 17.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_ydpj5")
+texture_progress = ExtResource("2_rdir2")
+tint_progress = Color(0.927304, 0.00717143, 0.282715, 1)
+
+[node name="DamageText" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -59.0
+offset_right = 29.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.591916, 0.150779, 0.202332, 1)
+theme_override_font_sizes/font_size = 40
+text = "20"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5dryh")
+}

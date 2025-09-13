@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbnaoa5qbbx6s"]
+
+[ext_resource type="Script" uid="uid://dyeaqff0rm17b" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://ce3gduueograx" path="res://art/Jojo Jungle Pack v1/Mockups/jjmockups.png" id="2_fu7sn"]
+
+[sub_resource type="GDScript" id="GDScript_7vrkn"]
+script/source = "extends Node
+
+# Сигналы
+signal connection_success
+signal connection_failed
+signal player_connected(player_id: int)
+signal player_disconnected(player_id: int)
+
+# Настройки
+const PORT = 7777
+const MAX_PLAYERS = 4
+
+# Переменные
+var peer = ENetMultiplayerPeer.new()
+var players = {}
+var connection_active := false
+
+func _ready():
+	peer.peer_connected.connect(_on_peer_connected)
+	peer.peer_disconnected.connect(_on_peer_disconnected)
+	print(\"NetworkManager готов\")
+
+func get_local_ip() -> String:
+	var interfaces = IP.get_local_interfaces()
+	for interface in interfaces:
+		# Ищем первый не-loopback IPv4 адрес
+		for address in interface[\"addresses\"]:
+			if address.find(\".\") != -1 and not address.begins_with(\"127.\"):
+				return address
+	return \"127.0.0.1\"  # fallback to localhost if no other IP found
+
+func _on_peer_connected(player_id: int):
+	print(\"Игрок подключился: \", player_id)
+	player_connected.emit(player_id)
+	spawn_player(player_id)
+
+func _on_peer_disconnected(player_id: int):
+	print(\"Игрок отключился: \", player_id)
+	player_disconnected.emit(player_id)
+	# Удаляем игрока из сцены
+	var player_node = get_tree().root.get_node_or_null(str(player_id))
+	if player_node:
+		player_node.queue_free()
+
+func start_hosting() -> bool:
+	if connection_active:
+		peer.close()
+	
+	var err = peer.create_server(PORT, MAX_PLAYERS)
+	if err == OK:
+		multiplayer.multiplayer_peer = peer
+		connection_active = true
+		print(\"✅ Сервер успешно создан\")
+		# Важно: вызываем сигнал после установки peer
+		call_deferred(\"emit_signal\", \"connection_success\")
+		return true
+	else:
+		printerr(\"❌ Ошибка создания сервера:\", error_string(err))
+		call_deferred(\"emit_signal\", \"connection_failed\")
+		return false
+
+func connect_to_host(ip: String):
+	print(\"Попытка подключения к\", ip)
+	var err = peer.create_client(ip, PORT)
+	
+	if err == OK:
+		multiplayer.multiplayer_peer = peer
+		connection_active = true
+		print(\"✅ Успешное подключение\")
+		connection_success.emit()
+		return true
+	else:
+		printerr(\"❌ Ошибка подключения:\", error_string(err))
+		connection_failed.emit()
+		return false
+
+func spawn_player(id: int):
+	print(\"Создание игрока ID:\", id)
+	var player = preload(\"res://character_body_2d.tscn\").instantiate()
+	player.name = str(id)
+	player.set_multiplayer_authority(id)
+	
+	# Добавляем игрока в текущую сцену, а не в корень
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		current_scene.add_child(player)
+		player.position = Vector2(100 * id, 100)
+	else:
+		printerr(\"Нет текущей сцены для спавна игрока!\")
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7vrkn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fu7sn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 66.0
+offset_right = 470.0
+offset_bottom = 110.0
+text = "Игра"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 106.0
+offset_right = 369.0
+offset_bottom = 154.0
+text = "Сингл"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 261.0
+offset_right = 374.0
+offset_bottom = 317.0
+text = "Выход"
+
+[node name="NetworkManager" type="Node" parent="."]
+script = SubResource("GDScript_7vrkn")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

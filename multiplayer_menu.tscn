@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=3 uid="uid://lbubq4xfcyel"]
+
+[sub_resource type="GDScript" id="GDScript_q5hnc"]
+script/source = "extends Control
+
+@onready var ip_input = $IPInput
+@onready var status_label = $StatusLabel
+var network_manager
+
+func _ready():
+	network_manager = get_node(\"/root/NetworkManager\")
+	ip_input.text = network_manager.get_local_ip()
+	print(\"Меню готово\")
+
+func _on_host_button_pressed():
+	status_label.text = \"Создание игры...\"
+	
+	if network_manager.start_hosting():
+		# Создаем таймер для таймаута
+		var timer = get_tree().create_timer(3.0)
+		
+		# Используем массив для обхода ограничения лямбд
+		var connection_status = [false]
+		
+		# Подключаемся к сигналу через временную функцию
+		var temp_func = func(): 
+			connection_status[0] = true
+			timer.stop()
+		
+		network_manager.connection_success.connect(temp_func, CONNECT_ONE_SHOT)
+		
+		# Ждем либо сигнал, либо таймаут
+		await timer.timeout
+		
+		if not connection_status[0]:
+			status_label.text = \"Таймаут подключения\"
+			await get_tree().create_timer(2.0).timeout
+			status_label.text = \"\"
+			return
+			
+		# Загрузка уровня
+		print(\"Переход на игровую сцену\")
+		var scene = load(\"res://node_2d.tscn\")
+		if scene:
+			# Очищаем текущее меню перед загрузкой
+			get_parent().remove_child(self)
+			queue_free()
+			
+			get_tree().change_scene_to_packed(scene)
+		else:
+			status_label.text = \"Ошибка загрузки сцены\"
+			await get_tree().create_timer(2.0).timeout
+			status_label.text = \"\"
+	else:
+		status_label.text = \"Ошибка создания игры\"
+		await get_tree().create_timer(2.0).timeout
+		status_label.text = \"\"
+
+func _on_join_button_pressed():
+	var ip = ip_input.text.strip_edges()
+	if ip.is_empty():
+		status_label.text = \"Введите IP сервера!\"
+		return
+		
+	status_label.text = \"Подключение...\"
+	
+	if network_manager.connect_to_host(ip):
+		await network_manager.connection_success
+		print(\"Переход на игровую сцену\")
+		get_tree().change_scene_to_file(\"res://node_2d.tscn\")
+	else:
+		status_label.text = \"Ошибка подключения\"
+		await get_tree().create_timer(2.0).timeout
+		status_label.text = \"\"
+
+func _on_back_button_pressed():
+	network_manager.peer.close()
+	queue_free()
+"
+
+[node name="multiplayer_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 472.0
+offset_top = 120.0
+offset_right = 774.0
+offset_bottom = 302.0
+script = SubResource("GDScript_q5hnc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = -10.0
+offset_right = 228.0
+offset_bottom = 28.0
+text = "Мультиплеер"
+
+[node name="IPInput" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.454
+anchor_right = 0.454
+offset_left = -32.108
+offset_top = 26.0
+offset_right = 81.892
+offset_bottom = 57.0
+
+[node name="HostButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 64.0
+offset_right = 195.0
+offset_bottom = 95.0
+text = "Хост"
+
+[node name="JoinButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 100.0
+offset_right = 224.0
+offset_bottom = 131.0
+text = "Подключиться"
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 31.0
+offset_right = 282.0
+offset_bottom = 54.0
+
+[connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]

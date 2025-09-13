@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbnaoa5qbbx6s"]
+
+[ext_resource type="Script" uid="uid://dyeaqff0rm17b" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://ce3gduueograx" path="res://art/Jojo Jungle Pack v1/Mockups/jjmockups.png" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://dw36jj32vkduk" path="res://network_manager.gd" id="3_fu7sn"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7vrkn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fu7sn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 66.0
+offset_right = 470.0
+offset_bottom = 110.0
+text = "Игра"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 106.0
+offset_right = 369.0
+offset_bottom = 154.0
+text = "Сингл"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 178.0
+offset_right = 373.0
+offset_bottom = 230.0
+text = "Мульти"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 261.0
+offset_right = 374.0
+offset_bottom = 317.0
+text = "Выход"
+
+[node name="NetworkManager" type="Node" parent="."]
+script = ExtResource("3_fu7sn")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
