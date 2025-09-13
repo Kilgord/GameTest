@@ -9,7 +9,9 @@ enum {
 	ATTACK3,
 	BLOCK,
 	DEATH,
-	DAMAGE
+	DAMAGE,
+	BLOCKACTIVE,
+	FIRE
 	
 }
 
@@ -31,6 +33,10 @@ var player_pos
 var damage_basic = 10
 var damage_multiplier = 1
 var damage_current 
+var jump_count = 0
+var max_jumps = 2
+var can_double_jump = false
+
 
 func _ready() -> void:
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
@@ -53,13 +59,15 @@ func _physics_process(delta: float) -> void:
 			death_state()	
 		DAMAGE:
 			damage_state()
-						
+		BLOCKACTIVE:
+			block_active_state()
+		FIRE:
+			fire_state()				
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	if velocity.y > 0:
-		animPlayer.play("falen")
+	
 	damage_current = damage_basic * damage_multiplier
 
 		
@@ -82,10 +90,18 @@ func move_state ():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if velocity.y == 0:
 			animPlayer.play("idle")	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		anim.play("jump")
-				
+			
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			jump_count = 1
+			animPlayer.play("jump")
+			can_double_jump = true
+		elif can_double_jump and jump_count < max_jumps:
+			velocity.y = JUMP_VELOCITY
+			jump_count +=1
+			can_double_jump = false
+			animPlayer.play("jump")		
 	if direction == -1:
 		anim.flip_h = true
 		$AttackDirection.rotation_degrees = 180
@@ -93,26 +109,37 @@ func move_state ():
 		anim.flip_h = false
 		$AttackDirection.rotation_degrees = 0
 	if velocity.y > 0:
-		anim.play("falen")	
+		animPlayer.play("falen")	
+		
 	if Input.is_action_pressed("Run"):
 		run_speed = 2
 	else:
 		run_speed = 1
 		
 	if Input.is_action_pressed("block"):
-		state = BLOCK	
+		state = BLOCK
 	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
-		state = ATTACK	
+		state = ATTACK
 		
 		
+	if 	Input.is_action_just_pressed("fire"):
+		state = FIRE	
 		
-		
+
+func fire_state ():
+	print("fire")	
 		
 func block_state ():
 	velocity.x = 0
 	animPlayer.play("block")
 	if Input.is_action_just_released("block"):
 		state = MOVE
+		
+func block_active_state ():
+	animPlayer.play("block_active")
+	await animPlayer.animation_finished
+	state = MOVE
+	
 func attack_state():
 	damage_multiplier = 1
 	if Input.is_action_just_pressed("attack") and combo == true:
@@ -162,10 +189,17 @@ func damage_state ():
 	state = MOVE
 		
 
+
+
 	
 func _on_damage_received (enemy_damage):
 	if  state == BLOCK:
-		enemy_damage /= 2	
+		enemy_damage /= 2
+		print(enemy_damage)
+		if enemy_damage == 10:
+			print("pipaka")
+			state = BLOCKACTIVE
+			
 	else:	
 		state = DAMAGE
 	health -= enemy_damage
@@ -179,3 +213,4 @@ func _on_damage_received (enemy_damage):
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	Signals.emit_signal("player_attack", damage_current)
+	
