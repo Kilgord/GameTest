@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal health_change(new_health)
+
 
 enum {
 	MOVE,
@@ -22,8 +22,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = $AnimatedSprite2D
 @onready var animPlayer = $AnimationPlayer
-var max_health = 100
-var health
+@onready var stats = $stats
+
 var gold = 0
 var state = MOVE
 var run_speed = 1
@@ -36,11 +36,11 @@ var damage_current
 var jump_count = 0
 var max_jumps = 2
 var can_double_jump = false
-
+var recovery = false
 
 func _ready() -> void:
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
-	health = max_health
+	
 
 func _physics_process(delta: float) -> void:
 		
@@ -111,15 +111,20 @@ func move_state ():
 	if velocity.y > 0:
 		animPlayer.play("falen")	
 		
-	if Input.is_action_pressed("Run"):
+	if Input.is_action_pressed("Run") and not recovery:
 		run_speed = 2
+		stats.energy -= stats.run_cost
 	else:
 		run_speed = 1
 		
 	if Input.is_action_pressed("block"):
 		state = BLOCK
-	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
-		state = ATTACK
+	if Input.is_action_just_pressed("attack"):
+		if not recovery:
+			stats.energy_cost = stats.attack_cost
+			stats.energy -= stats.energy_cost
+			if attack_cooldown == false and stats.energy > stats.energy_cost:
+				state = ATTACK
 		
 		
 	if 	Input.is_action_just_pressed("fire"):
@@ -136,13 +141,16 @@ func block_state ():
 		state = MOVE
 		
 func block_active_state ():
-	animPlayer.play("block_active")
-	await animPlayer.animation_finished
-	state = MOVE
+	if not recovery:
+		stats.energy -= stats.block_cost
+		animPlayer.play("block_active")
+		await animPlayer.animation_finished
+		state = MOVE
 	
 func attack_state():
+	stats.energy_cost = stats.attack_cost
 	damage_multiplier = 1
-	if Input.is_action_just_pressed("attack") and combo == true:
+	if Input.is_action_just_pressed("attack") and combo == true and stats.energy > stats.energy_cost:
 		state = ATTACK2
 	velocity.x = 0
 	animPlayer.play("attack")
@@ -151,8 +159,9 @@ func attack_state():
 	state = MOVE
 	
 func attack2_stae ():
+	stats.energy_cost = stats.attack_cost
 	damage_multiplier = 1.2
-	if Input.is_action_just_pressed("attack") and combo == true:
+	if Input.is_action_just_pressed("attack") and combo == true and stats.energy > stats.energy_cost:
 		state = ATTACK3
 	animPlayer.play("attack2")
 	await animPlayer.animation_finished
@@ -202,15 +211,20 @@ func _on_damage_received (enemy_damage):
 			
 	else:	
 		state = DAMAGE
-	health -= enemy_damage
-	if health <= 0:
-		health = 0
+	stats.health -= enemy_damage
+	if stats.health <= 0:
+		stats.health = 0
 		state = DEATH
 	
-	emit_signal("health_change", health)
+	
 	
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	Signals.emit_signal("player_attack", damage_current)
 	
+
+func _on_stats_no_energy() -> void:
+	recovery = true
+	await get_tree().create_timer(2).timeout
+	recovery = false

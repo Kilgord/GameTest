@@ -2,7 +2,6 @@ extends Node2D
 @onready var light = $DirectionalLight2D
 @onready var pointlight = $PointLight2D
 @onready var animPlayer = $CanvasLayer/AnimationPlayer
-@onready var healt_bar = $CanvasLayer/HealthBar
 @onready var player = $Player/CharacterBody2D
 
 enum {
@@ -15,8 +14,6 @@ enum {
 var state = MORNING
 
 func _ready() -> void:
-	healt_bar.max_value = player.max_health
-	healt_bar.value = healt_bar.max_value
 	light.enabled = true
 
 
@@ -47,7 +44,3 @@ func _on_day_night_timeout() -> void:
 		state += 1
 	else:
 		state = MORNING
-
-
-func _on_character_body_2d_health_change(new_health: Variant) -> void:
-	healt_bar.value = new_health
