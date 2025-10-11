@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkghimn8n3206"]
+[gd_scene load_steps=21 format=3 uid="uid://bgsovrw6560da"]
 
 [ext_resource type="Script" uid="uid://blewsvsx54nhv" path="res://node_2d.gd" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://du6fkhgr3jg2k" path="res://character_body_2d.tscn" id="1_wtcfe"]
@@ -127,16 +127,6 @@ sources/0 = SubResource("TileSetAtlasSource_epypp")
 
 [sub_resource type="GDScript" id="GDScript_0hol4"]
 script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	text = \"HP: \" + str($\"../../Player/CharacterBody2D\".health)
 "
 
 [sub_resource type="GDScript" id="GDScript_q6r6c"]
@@ -327,6 +317,5 @@ stream = ExtResource("10_ir8iy")
 volume_db = -20.0
 autoplay = true
 
-[connection signal="health_change" from="Player/CharacterBody2D" to="." method="_on_character_body_2d_health_change"]
 [connection signal="timeout" from="Collect/Timer" to="Collect" method="_on_timer_timeout"]
 [connection signal="timeout" from="DayNight" to="." method="_on_day_night_timeout"]

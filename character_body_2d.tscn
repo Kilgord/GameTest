@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://du6fkhgr3jg2k"]
+[gd_scene load_steps=111 format=3 uid="uid://du6fkhgr3jg2k"]
 
 [ext_resource type="Script" uid="uid://bsgobnoxc5oab" path="res://character_body_2d.gd" id="1_1kp85"]
 [ext_resource type="Texture2D" uid="uid://ds3j44fc0f0xu" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/RUN.png" id="1_lhvu3"]
@@ -13,6 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://c2p35p3hv07pd" path="res://art/Knight 2D Pixel Art/Sprites/with_outline/HURT.png" id="7_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://q1ado4w1y1tr" path="res://art/Knight 2D Pixel Art/Sprites/with_outline/DEATH.png" id="8_wyqjk"]
 [ext_resource type="PackedScene" uid="uid://tbowfqgrey7s" path="res://DamageBox/damage_box.tscn" id="11_qnedo"]
+[ext_resource type="PackedScene" uid="uid://b18vcqslm2wyk" path="res://stats.tscn" id="14_ebjds"]
+[ext_resource type="AudioStream" uid="uid://ddki7l882aw7j" path="res://Music/Player/step.MP3" id="15_au0nh"]
+[ext_resource type="AudioStream" uid="uid://deqciww2nbdsc" path="res://Music/Player/step2.MP3" id="16_76bt2"]
+[ext_resource type="AudioStream" uid="uid://sutygerwso3k" path="res://Music/Player/swing.MP3" id="17_2dyae"]
+[ext_resource type="AudioStream" uid="uid://clolsj1jewn88" path="res://Music/Player/swing2.MP3" id="18_2u5n8"]
+[ext_resource type="AudioStream" uid="uid://7nkpi8qjmfhv" path="res://Music/Player/swing3.MP3" id="19_73nau"]
+[ext_resource type="AudioStream" uid="uid://5wdqp4p0i4oe" path="res://Music/Player/swing4.MP3" id="20_skrk8"]
+[ext_resource type="AudioStream" uid="uid://drlg7vrp17lgj" path="res://Music/Player/smack.MP3" id="21_2u5n8"]
+[ext_resource type="AudioStream" uid="uid://brr56div76mri" path="res://Music/Player/player_hurt.MP3" id="22_skrk8"]
+[ext_resource type="AudioStream" uid="uid://dnageyb1rjpue" path="res://Music/Player/player)hurt2.MP3" id="23_ye16i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(6, 10)
@@ -556,6 +566,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sounds/Steps:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Swings:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Hurt:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_x6jt5"]
 length = 0.8
@@ -582,6 +628,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Run"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Steps:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_v7lqg"]
@@ -636,6 +694,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stats")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"energy_consuption"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sounds/Swings:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_jqvwn"]
 length = 0.5
@@ -689,6 +773,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stats")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"energy_consuption"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sounds/Swings:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_rwhj8"]
 length = 0.6
@@ -727,6 +837,32 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("stats")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"energy_consuption"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sounds/Swings:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_6jp41"]
@@ -808,6 +944,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["damage"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Hurt:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_k85er"]
@@ -973,6 +1121,23 @@ _data = {
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1kp85"]
 polygon = PackedVector2Array(439, 271, 445, 271, 446, 272, 439, 272)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sxias"]
+streams_count = 2
+stream_0/stream = ExtResource("15_au0nh")
+stream_1/stream = ExtResource("16_76bt2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ye16i"]
+streams_count = 4
+stream_0/stream = ExtResource("17_2dyae")
+stream_1/stream = ExtResource("18_2u5n8")
+stream_2/stream = ExtResource("19_73nau")
+stream_3/stream = ExtResource("20_skrk8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_75u2t"]
+streams_count = 2
+stream_0/stream = ExtResource("22_skrk8")
+stream_1/stream = ExtResource("23_ye16i")
+
 [node name="Playes" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_1kp85")
@@ -984,8 +1149,9 @@ shape = SubResource("RectangleShape2D_ij6vw")
 position = Vector2(3.63798e-12, -2)
 scale = Vector2(0.351873, 0.366451)
 sprite_frames = SubResource("SpriteFrames_4sjlk")
-animation = &"Run"
+animation = &"damage"
 autoplay = "idle"
+frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6.24, 6.24)
@@ -1018,6 +1184,27 @@ collision_mask = 32
 [node name="CollisionShape2D" parent="AttackDirection/DamageBox/HitBox" index="0"]
 position = Vector2(7, 0)
 
+[node name="stats" parent="." instance=ExtResource("14_ebjds")]
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Steps" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_sxias")
+volume_db = -10.0
+
+[node name="Swings" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_ye16i")
+volume_db = -10.0
+
+[node name="Smack" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("21_2u5n8")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_75u2t")
+volume_db = -10.0
+pitch_scale = 0.88
+
 [connection signal="area_entered" from="AttackDirection/DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="no_energy" from="stats" to="." method="_on_stats_no_energy"]
 
 [editable path="AttackDirection/DamageBox"]

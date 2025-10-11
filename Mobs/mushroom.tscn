@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b3nmpx846d5ao"]
+[gd_scene load_steps=79 format=3 uid="uid://b3nmpx846d5ao"]
 
 [ext_resource type="Script" uid="uid://cjlt4vawe6ldt" path="res://Mobs/mushroom.gd" id="1_selrt"]
 [ext_resource type="Texture2D" uid="uid://bkwwuid613pb0" path="res://art/oak_woods_v1.0/character/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="1_sjuu0"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cbqj55u5b1osl" path="res://art/oak_woods_v1.0/character/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="6_xshu0"]
 [ext_resource type="PackedScene" uid="uid://tbowfqgrey7s" path="res://DamageBox/damage_box.tscn" id="7_ufykn"]
 [ext_resource type="PackedScene" uid="uid://cv53o6gojaist" path="res://mob_health.tscn" id="9_3ua80"]
+[ext_resource type="AudioStream" uid="uid://dlwmx5jtemmxc" path="res://Music/Mushroom/1014.MP3" id="10_d2aqh"]
+[ext_resource type="AudioStream" uid="uid://dqah577vv1nlp" path="res://Music/Mushroom/1014(1).MP3" id="11_vwrmq"]
+[ext_resource type="AudioStream" uid="uid://cqnlbr0lvepl8" path="res://Music/Mushroom/1014(2).MP3" id="12_n63ap"]
+[ext_resource type="AudioStream" uid="uid://c2mr5adbbwtla" path="res://Music/Mushroom/1014(3).MP3" id="13_sdset"]
+[ext_resource type="AudioStream" uid="uid://b61bjkicgxspt" path="res://Music/Mushroom/1014(4).MP3" id="14_4do7c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_768lt"]
 radius = 4.0
@@ -458,6 +463,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Hurt:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hlyux"]
 tracks/0/type = "value"
@@ -531,6 +548,18 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Hurt:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -708,6 +737,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjuu0"]
 size = Vector2(8.75, 9)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fd7ou"]
+streams_count = 5
+stream_0/stream = ExtResource("10_d2aqh")
+stream_1/stream = ExtResource("11_vwrmq")
+stream_2/stream = ExtResource("12_n63ap")
+stream_3/stream = ExtResource("13_sdset")
+stream_4/stream = ExtResource("14_4do7c")
+
 [node name="Mushroom" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_selrt")
@@ -721,8 +758,9 @@ shape = SubResource("CapsuleShape2D_768lt")
 position = Vector2(0, -12)
 scale = Vector2(0.523437, 0.523437)
 sprite_frames = SubResource("SpriteFrames_2816u")
-animation = &"idle "
+animation = &"damage"
 autoplay = "idle "
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -756,6 +794,13 @@ position = Vector2(-15, 1)
 [node name="MobHealth" parent="." instance=ExtResource("9_3ua80")]
 position = Vector2(0, -16)
 scale = Vector2(0.12, 0.12)
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_fd7ou")
+volume_db = -10.0
+pitch_scale = 0.88
 
 [connection signal="body_entered" from="AttakDirection/AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="area_entered" from="AttakDirection/DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
