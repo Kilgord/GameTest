@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dkghimn8n3206"]
+[gd_scene load_steps=21 format=3 uid="uid://dkghimn8n3206"]
 
 [ext_resource type="Script" uid="uid://blewsvsx54nhv" path="res://node_2d.gd" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://du6fkhgr3jg2k" path="res://character_body_2d.tscn" id="1_wtcfe"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b3nmpx846d5ao" path="res://Mobs/mushroom.tscn" id="6_rj586"]
 [ext_resource type="Texture2D" uid="uid://bm5476044mmx8" path="res://art/bar/Pixel Health Bar/Bar/empty health bar.png" id="7_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://cifoe3pfaa5qs" path="res://art/bar/Pixel Health Bar/Health/health.png" id="8_ir8iy"]
+[ext_resource type="AudioStream" uid="uid://clnrq3r5ok3mo" path="res://Music/Ambient 1.mp3" id="10_ir8iy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
 texture = ExtResource("3_0hol4")
@@ -320,6 +321,11 @@ texture_scale = 1.52
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(2, -1)
 occluder = SubResource("OccluderPolygon2D_kdubu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ir8iy")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="health_change" from="Player/CharacterBody2D" to="." method="_on_character_body_2d_health_change"]
 [connection signal="timeout" from="Collect/Timer" to="Collect" method="_on_timer_timeout"]
