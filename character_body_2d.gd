@@ -23,6 +23,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = $AnimatedSprite2D
 @onready var animPlayer = $AnimationPlayer
 @onready var stats = $stats
+@onready var smack = $Sounds/Smack
+
 
 var gold = 0
 var state = MOVE
@@ -40,6 +42,7 @@ var recovery = false
 
 func _ready() -> void:
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
+	
 	
 
 func _physics_process(delta: float) -> void:
@@ -127,8 +130,7 @@ func move_state ():
 				state = ATTACK
 		
 		
-	if 	Input.is_action_just_pressed("fire"):
-		state = FIRE	
+	
 		
 #super testing
 func fire_state ():
@@ -202,6 +204,7 @@ func damage_state ():
 
 	
 func _on_damage_received (enemy_damage):
+	smack.play()
 	if  state == BLOCK:
 		enemy_damage /= 2
 		print(enemy_damage)

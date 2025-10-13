@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbnaoa5qbbx6s"]
+[gd_scene load_steps=7 format=3 uid="uid://cbnaoa5qbbx6s"]
 
 [ext_resource type="Script" uid="uid://dyeaqff0rm17b" path="res://main_menu.gd" id="1_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://ce3gduueograx" path="res://art/Jojo Jungle Pack v1/Mockups/jjmockups.png" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://sy1xf824m1ga" path="res://art/back/nature_1/origbig.png" id="2_glbon"]
+[ext_resource type="AudioStream" uid="uid://bwbk6yoeni7xg" path="res://Music/click-21156.mp3" id="3_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://wqdjlstxtouq" path="res://Music/Ambient 2.mp3" id="4_jix8l"]
+[ext_resource type="PackedScene" uid="uid://lqdeyl86vwxn" path="res://leafs.tscn" id="5_glbon"]
 
 [sub_resource type="GDScript" id="GDScript_7vrkn"]
 script/source = "extends Node
@@ -103,38 +106,52 @@ offset_bottom = 40.0
 script = ExtResource("1_7vrkn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_fu7sn")
+scale = Vector2(0.499733, 0.493566)
+texture = ExtResource("2_glbon")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 66.0
-offset_right = 470.0
-offset_bottom = 110.0
-text = "Игра"
+offset_left = 468.0
+offset_top = 130.0
+offset_right = 688.0
+offset_bottom = 174.0
+text = "Medival of knight"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 179.0
-offset_top = 106.0
-offset_right = 369.0
-offset_bottom = 154.0
-text = "Сингл"
+offset_left = 484.0
+offset_top = 235.0
+offset_right = 674.0
+offset_bottom = 283.0
+text = "Играть"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 182.0
-offset_top = 261.0
-offset_right = 374.0
-offset_bottom = 317.0
+offset_left = 484.0
+offset_top = 387.0
+offset_right = 676.0
+offset_bottom = 443.0
 text = "Выход"
 
 [node name="NetworkManager" type="Node" parent="."]
 script = SubResource("GDScript_7vrkn")
+
+[node name="buttons" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fu7sn")
+
+[node name="Fonts" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jix8l")
+autoplay = true
+
+[node name="Leafs" parent="." instance=ExtResource("5_glbon")]
+position = Vector2(570, -32)
+scale = Vector2(-6.0633, 15.6008)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

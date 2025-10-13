@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://lqdeyl86vwxn"]
+
+[ext_resource type="Texture2D" uid="uid://bjf8skdjdccvh" path="res://leaf.png" id="1_3bnux"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ig7ww"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(120, 1, 1)
+initial_velocity_min = 0.01
+initial_velocity_max = 0.03
+gravity = Vector3(220, 1000, 0)
+scale_min = 0.7
+color = Color(0.172549, 0.619608, 0.407843, 1)
+
+[node name="Leafs" type="GPUParticles2D"]
+amount = 80
+texture = ExtResource("1_3bnux")
+lifetime = 3.79
+speed_scale = 0.3
+process_material = SubResource("ParticleProcessMaterial_ig7ww")

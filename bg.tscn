@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://4wbjlp81r4vy"]
+
+[ext_resource type="Texture2D" uid="uid://bge83l6h8l2e1" path="res://art/back/nature_5/1.png" id="1_e8j8q"]
+[ext_resource type="Texture2D" uid="uid://dggigu3r2te3n" path="res://art/back/nature_5/2.png" id="2_iq1of"]
+[ext_resource type="Texture2D" uid="uid://bt8fmwno5t1ng" path="res://art/back/nature_5/3.png" id="3_36ycx"]
+
+[node name="BG" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(570, 0)
+
+[node name="Sky" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(289, 162)
+texture = ExtResource("1_e8j8q")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(570, 0)
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(287, 163)
+texture = ExtResource("2_iq1of")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(570, 0)
+
+[node name="grass" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(287, 162)
+texture = ExtResource("3_36ycx")
