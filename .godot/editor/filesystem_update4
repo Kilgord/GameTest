@@ -1,5 +1,3 @@
-res://king.tscn
-res://AI/ai_assistant.gd
 res://node_2d.tscn
 res://main_menu.tscn
 res://character_body_2d.tscn
@@ -11,7 +9,7 @@ res://player_2npc.tscn
 res://Dialog/dialog_ui.tscn
 res://Inventar/inventory_ui.tscn
 res://Inventar/inventory_slot.tscn
+res://king.tscn
 res://leafs.tscn
-res://character_body_2d.gd
-res://Chat_online/chat_ui.gd
 res://chat_ui.tscn
+res://Chat_online/chat_ui.gd
