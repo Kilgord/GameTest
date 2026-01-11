@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cukqnoswr2dh0"]
+
+[ext_resource type="Texture2D" uid="uid://brtwah2n2dbdh" path="res://Dialog/panel_brown.png" id="1_i5ysq"]
+[ext_resource type="Texture2D" uid="uid://c6tt2obym4hh8" path="res://art/Portraits/Eleonore/Eleonore1.png" id="2_2pxcp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5ysq"]
+texture = ExtResource("1_i5ysq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2pxcp"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="DialogUI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -204.0
+offset_right = 159.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i5ysq")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Тут будет"
+label_settings = SubResource("LabelSettings_2pxcp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(263, 100)
+scale = Vector2(1.70833, 1.85417)
+texture = ExtResource("2_2pxcp")

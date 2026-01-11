@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo32ex3rp236o"]
+
+[ext_resource type="Texture2D" uid="uid://did3qp54dgdvi" path="res://Rain_mini.png" id="1_kwfd8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kwfd8"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 500, 1)
+gravity = Vector3(0, 98, 0)
+collision_mode = 2
+collision_use_scale = true
+
+[node name="Rain" type="GPUParticles2D"]
+position = Vector2(588, 367)
+amount = 700
+texture = ExtResource("1_kwfd8")
+lifetime = 2.0
+speed_scale = 2.29
+process_material = SubResource("ParticleProcessMaterial_kwfd8")

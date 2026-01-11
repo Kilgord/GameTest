@@ -16,6 +16,8 @@ enum {
 }
 
 const SPEED = 100.0
+const ACCEL = 500.0  # Ускорение для плавного старта
+const DECEL = 600.0  # Торможение
 const JUMP_VELOCITY = -250.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -24,7 +26,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animPlayer = $AnimationPlayer
 @onready var stats = $stats
 @onready var smack = $Sounds/Smack
-
+@onready var inventory_ui = preload("res://Inventar/inventory_ui.tscn")
 
 var gold = 0
 var state = MOVE
@@ -39,17 +41,26 @@ var jump_count = 0
 var max_jumps = 2
 var can_double_jump = false
 var recovery = false
+var near_npc = false
+var current_npc_area = null
+var inventory_instance = null
+
 
 func _ready() -> void:
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
-	
+	print("🎮 Для теста нажмите:")
+	print("   - E (ваша кнопка)")
+	print("   - ПРОБЕЛ (стандартная)")
+	print("   - ENTER")
+	print("   - ЛКМ (мышь)")
 	
 
+		
 func _physics_process(delta: float) -> void:
 		
 	match state:
 		MOVE:
-			move_state()
+			move_state(delta)	
 		ATTACK:
 			attack_state()
 		ATTACK2:
@@ -73,26 +84,42 @@ func _physics_process(delta: float) -> void:
 	
 	damage_current = damage_basic * damage_multiplier
 
-		
+	
 	move_and_slide()
 	
 	player_pos = self.position
 	Signals.emit_signal("player_position_update", player_pos)
 	
 	
-func move_state ():
+func move_state(delta: float):
 	var direction := Input.get_axis("ui_left", "ui_right")
+	
 	if direction:
-		velocity.x = direction * SPEED * run_speed
+		var target_speed = direction * SPEED * run_speed
+		velocity.x = move_toward(velocity.x, target_speed, ACCEL * delta)
+		
 		if velocity.y == 0:
-			if run_speed == 1:
+			# Анимация зависит от текущей скорости
+			var speed_percent = abs(velocity.x) / (SPEED * run_speed)
+			
+			if speed_percent > 0.8:  # Высокая скорость
+				if run_speed > 1:
+					animPlayer.play("Run")
+				else:
+					animPlayer.play("walk")
+			elif speed_percent > 0.1:  # Средняя/низкая скорость
 				animPlayer.play("walk")
-			else:
-				animPlayer.play("Run")	
+			else:  # Очень медленно
+				animPlayer.play("idle")
+				
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, DECEL * delta)
+		
 		if velocity.y == 0:
-			animPlayer.play("idle")	
+			if abs(velocity.x) < 5:  # Почти остановился
+				animPlayer.play("idle")
+			else:  # Ещё катится по инерции
+				animPlayer.play("walk")
 			
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
@@ -221,8 +248,6 @@ func _on_damage_received (enemy_damage):
 	
 	
 	
-
-
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	Signals.emit_signal("player_attack", damage_current)
 	
@@ -231,3 +256,72 @@ func _on_stats_no_energy() -> void:
 	recovery = true
 	await get_tree().create_timer(2).timeout
 	recovery = false
+
+
+			
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.name == "Dialog" or area.is_in_group("npc_dialog"):
+		near_npc = true
+		current_npc_area = area
+		print("✅ Рядом с NPC!")
+		print("   Нажмите E для диалога")
+	
+	
+func _on_hurt_box_area_exited(area: Area2D) -> void:
+	print("\n🎮 Выход из зоны:", area.name)
+	
+	if area.name == "Dialog" or area.is_in_group("npc_dialog"):
+		near_npc = false
+		current_npc_area = null
+		print("🚶 Отошел от NPC")
+		
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		toggle_inventory()
+	# 1. ПРЯМАЯ ПРОВЕРКА КЛАВИШИ E (ВСЕГДА РАБОТАЕТ)
+	if event is InputEventKey and event.keycode == KEY_E and event.pressed and not event.echo:
+		print("\n🎮 НАЖАТИЕ КЛАВИШИ E")
+		check_and_send_signal()
+		return  # Выходим, чтобы не проверять дальше
+	
+	# 2. Проверка действия (только если оно существует)
+	if InputMap.has_action("open_dialog"):
+		if event.is_action("open_dialog") and event.is_pressed():
+			print("\n🎮 ДЕЙСТВИЕ 'open_dialog'")
+			check_and_send_signal()
+
+func check_and_send_signal():
+	print("   near_npc =", near_npc)
+	
+	if near_npc:
+		print("   ✅ Отправляю сигнал player_dialog_knopka")
+		Signals.emit_signal("player_dialog_knopka")
+	else:
+		print("   ❌ Игрок не рядом с NPC")
+
+
+func _input_inventary(event: InputEvent) -> void:
+	# Открыть инвентарь по I
+	if event.is_action_just_pressed("inventory"):
+		toggle_inventory()
+
+func toggle_inventory() -> void:
+	if inventory_instance and inventory_instance.visible:
+		close_inventory()
+	else:
+		open_inventory()
+
+func open_inventory() -> void:
+	print("Открываю инвентарь")
+	
+	if inventory_instance == null:
+		inventory_instance = inventory_ui.instantiate()
+		get_tree().get_root().add_child(inventory_instance)
+	
+	inventory_instance.open()
+
+func close_inventory() -> void:
+	print("Закрываю инвентарь")
+	
+	if inventory_instance:
+		inventory_instance.close()
