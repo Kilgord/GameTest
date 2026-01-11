@@ -1,6 +1,10 @@
-TextEdit
 Label
+Button
+LineEdit
+VBoxContainer
 Panel
+HBoxContainer
+TextEdit
 Control
 Timer
 HTTPRequest
@@ -8,8 +12,3 @@ Node
 GPUParticles2D
 AnimationPlayer
 AnimatedSprite2D
-CollisionShape2D
-CharacterBody2D
-Button
-ColorRect
-TextureRect

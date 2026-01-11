@@ -13,3 +13,5 @@ res://Inventar/inventory_ui.tscn
 res://Inventar/inventory_slot.tscn
 res://leafs.tscn
 res://character_body_2d.gd
+res://Chat_online/chat_ui.gd
+res://chat_ui.tscn

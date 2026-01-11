@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://rkrxuevfm7ll"]
+
+[ext_resource type="Script" uid="uid://duxxdp73yina3" path="res://Chat_online/chat_ui.gd" id="1_hixvo"]
+
+[node name="ChatUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 578.0
+offset_right = -736.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.989115, 1.01271)
+script = ExtResource("1_hixvo")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 12.0
+offset_right = 144.0
+offset_bottom = 56.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.2297
+offset_top = -42.0
+offset_right = 109.77
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.492731, 0.418375)
+
+[node name="ChatLog" type="TextEdit" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 9
+editable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="MessageInput" type="LineEdit" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 9
+
+[node name="SendButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 11
+text = "Ок
+"
+icon_alignment = 2
+
+[node name="ConnectionPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.8253
+offset_top = -34.0
+offset_right = 174.825
+offset_bottom = 32.0
+scale = Vector2(0.639628, 0.671082)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectionPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.515
+anchor_right = 0.5
+anchor_bottom = 0.515
+offset_left = -46.5
+offset_top = -30.99
+offset_right = 145.5
+offset_bottom = 88.01
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.493762, 0.493762)
+
+[node name="IPInput" type="LineEdit" parent="ConnectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "127.0.0.1"
+
+[node name="PortInput" type="LineEdit" parent="ConnectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 9
+text = "12345"
+
+[node name="NameInput" type="LineEdit" parent="ConnectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Игрок_1"
+
+[node name="ConnectButton" type="Button" parent="ConnectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "подключение"
+
+[node name="StatusLabel" type="Label" parent="ConnectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
