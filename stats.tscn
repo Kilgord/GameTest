@@ -10,6 +10,7 @@
 script = ExtResource("1_adv4l")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+light_mask = 0
 offset_left = 26.0
 offset_top = 19.0
 offset_right = 154.0
@@ -19,6 +20,7 @@ texture_under = ExtResource("1_74t8q")
 texture_progress = ExtResource("2_adv4l")
 
 [node name="Energy" type="TextureProgressBar" parent="."]
+light_mask = 0
 offset_left = 11.0
 offset_top = 36.0
 offset_right = 169.0

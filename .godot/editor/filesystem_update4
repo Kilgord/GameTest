@@ -12,4 +12,5 @@ res://Inventar/inventory_slot.tscn
 res://king.tscn
 res://leafs.tscn
 res://chat_ui.tscn
-res://Chat_online/chat_ui.gd
+res://Build/shop.tscn
+res://multiplayer_menu.tscn

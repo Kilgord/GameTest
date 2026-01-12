@@ -6,15 +6,21 @@
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(120, 1, 1)
-initial_velocity_min = 0.01
-initial_velocity_max = 0.03
+inherit_velocity_ratio = 0.14
+direction = Vector3(2, 1, 0)
+spread = 0.0
+initial_velocity_min = 23.17
+initial_velocity_max = 89.73
 gravity = Vector3(220, 1000, 0)
 scale_min = 0.7
 color = Color(0.172549, 0.619608, 0.407843, 1)
 
 [node name="Leafs" type="GPUParticles2D"]
 amount = 80
+amount_ratio = 0.999
 texture = ExtResource("1_3bnux")
-lifetime = 3.79
-speed_scale = 0.3
+lifetime = 4.43
+preprocess = 1.12
+speed_scale = 0.5
+randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_ig7ww")

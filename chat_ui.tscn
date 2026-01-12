@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://duxxdp73yina3" path="res://Chat_online/chat_ui.gd" id="1_hixvo"]
 
 [node name="ChatUI" type="Control"]
+light_mask = 14
+visibility_layer = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,6 +69,8 @@ text = "Ок
 icon_alignment = 2
 
 [node name="ConnectionPanel" type="Panel" parent="."]
+light_mask = 0
+visibility_layer = 2
 layout_mode = 0
 offset_left = 75.8253
 offset_top = -34.0

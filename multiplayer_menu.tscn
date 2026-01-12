@@ -79,6 +79,7 @@ func _on_back_button_pressed():
 "
 
 [node name="multiplayer_menu" type="Control"]
+light_mask = 0
 layout_mode = 3
 anchors_preset = 0
 offset_left = 472.0
@@ -96,6 +97,7 @@ offset_bottom = 28.0
 text = "Мультиплеер"
 
 [node name="IPInput" type="LineEdit" parent="."]
+light_mask = 0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.454
@@ -106,6 +108,7 @@ offset_right = 81.892
 offset_bottom = 57.0
 
 [node name="HostButton" type="Button" parent="."]
+light_mask = 0
 layout_mode = 0
 offset_left = 119.0
 offset_top = 64.0
@@ -114,6 +117,7 @@ offset_bottom = 95.0
 text = "Хост"
 
 [node name="JoinButton" type="Button" parent="."]
+light_mask = 0
 layout_mode = 0
 offset_left = 96.0
 offset_top = 100.0
