@@ -1,4 +1,3 @@
-res://chat_ui.tscn
 res://node_2d.tscn
 res://main_menu.tscn
 res://character_body_2d.tscn
@@ -13,7 +12,7 @@ res://Build/shop.tscn
 res://king.tscn
 res://multiplayer_menu.tscn
 res://art/Tileset_Jungle.tres
-res://art/scene_2.tscn
-res://art/apple_teleport.gd
-res://apple_teleport.gd
 res://scene_2.tscn
+res://Chat_online/chat_ui.gd
+res://chat_ui.tscn
+res://character_body_2d.gd

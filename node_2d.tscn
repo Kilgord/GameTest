@@ -751,6 +751,7 @@ text = "Gold"
 script = SubResource("GDScript_q6r6c")
 
 [node name="Label3" type="Label" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 544.0
 offset_top = 325.0
@@ -822,7 +823,7 @@ scale = Vector2(2.2, 23.56)
 motion_mirroring = Vector2(570, 0)
 
 [node name="Sky" type="Sprite2D" parent="BG/ParallaxLayer"]
-position = Vector2(506.364, 135.739)
+position = Vector2(492.727, 135.314)
 scale = Vector2(2.45107, 1.10821)
 texture = ExtResource("11_0h7mo")
 

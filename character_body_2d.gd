@@ -92,6 +92,12 @@ func _physics_process(delta: float) -> void:
 	
 	
 func move_state(delta: float):
+	var chat_nodes = get_tree().get_nodes_in_group("chat_system")
+	for chat in chat_nodes:
+		if chat.chat_active and chat.message_input.has_focus():
+			print("Движение заблокировано: активен чат")
+			return
+			
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	if direction:
@@ -312,6 +318,13 @@ func toggle_inventory() -> void:
 		open_inventory()
 
 func open_inventory() -> void:
+	# Проверяем все узлы в группе чата
+	var chat_nodes = get_tree().get_nodes_in_group("chat_system")
+	for chat in chat_nodes:
+		if chat.chat_active and chat.message_input.has_focus():
+			print("Инвентарь заблокирован: активен чат")
+			return
+	
 	print("Открываю инвентарь")
 	
 	if inventory_instance == null:

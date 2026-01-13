@@ -45,12 +45,20 @@ grow_vertical = 0
 scale = Vector2(0.492731, 0.411285)
 
 [node name="ChatLog" type="TextEdit" parent="Panel/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("2_tl3l8")
 theme_override_font_sizes/font_size = 8
 editable = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_tl3l8")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
