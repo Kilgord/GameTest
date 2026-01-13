@@ -1,3 +1,4 @@
+res://chat_ui.tscn
 res://node_2d.tscn
 res://main_menu.tscn
 res://character_body_2d.tscn
@@ -8,9 +9,11 @@ res://bg.tscn
 res://player_2npc.tscn
 res://Dialog/dialog_ui.tscn
 res://Inventar/inventory_ui.tscn
-res://Inventar/inventory_slot.tscn
-res://king.tscn
-res://leafs.tscn
-res://chat_ui.tscn
 res://Build/shop.tscn
+res://king.tscn
 res://multiplayer_menu.tscn
+res://art/Tileset_Jungle.tres
+res://art/scene_2.tscn
+res://art/apple_teleport.gd
+res://apple_teleport.gd
+res://scene_2.tscn

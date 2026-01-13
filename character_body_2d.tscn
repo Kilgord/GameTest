@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://du6fkhgr3jg2k"]
+[gd_scene load_steps=111 format=3 uid="uid://du6fkhgr3jg2k"]
 
 [ext_resource type="Script" uid="uid://bsgobnoxc5oab" path="res://character_body_2d.gd" id="1_1kp85"]
 [ext_resource type="Texture2D" uid="uid://ds3j44fc0f0xu" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/RUN.png" id="1_lhvu3"]
@@ -23,7 +23,6 @@
 [ext_resource type="AudioStream" uid="uid://drlg7vrp17lgj" path="res://Music/Player/smack.MP3" id="21_2u5n8"]
 [ext_resource type="AudioStream" uid="uid://brr56div76mri" path="res://Music/Player/player_hurt.MP3" id="22_skrk8"]
 [ext_resource type="AudioStream" uid="uid://dnageyb1rjpue" path="res://Music/Player/player)hurt2.MP3" id="23_ye16i"]
-[ext_resource type="PackedScene" uid="uid://rkrxuevfm7ll" path="res://chat_ui.tscn" id="24_ye16i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(6, 10)
@@ -1205,12 +1204,6 @@ stream = ExtResource("21_2u5n8")
 stream = SubResource("AudioStreamRandomizer_75u2t")
 volume_db = -10.0
 pitch_scale = 0.88
-
-[node name="ChatUI" parent="." instance=ExtResource("24_ye16i")]
-offset_left = -160.0
-offset_top = -32.0
-offset_right = -160.0
-offset_bottom = -32.0
 
 [connection signal="area_entered" from="AttackDirection/DamageBox/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="AttackDirection/DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
