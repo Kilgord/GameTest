@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*res://signals.gd"
 InventoryManagerE="*res://Inventar/InventoryManagerE.gd"
+SceneChanger="*res://SceneChanger.tscn"
 
 [editor_plugins]
 
