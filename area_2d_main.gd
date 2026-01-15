@@ -9,4 +9,4 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
 		print("Персонаж зашел")
 		# Обращаемся к нашему глобальному скрипту
-		SceneChanger.change_scene("res://node_2d.tscn")
+		SceneChanger.change_scene("res://scene_2.tscn")

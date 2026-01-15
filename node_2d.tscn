@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bgsovrw6560da"]
+[gd_scene load_steps=31 format=3 uid="uid://bgsovrw6560da"]
 
 [ext_resource type="Script" uid="uid://blewsvsx54nhv" path="res://node_2d.gd" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://du6fkhgr3jg2k" path="res://character_body_2d.tscn" id="1_wtcfe"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dggigu3r2te3n" path="res://art/back/nature_5/2.png" id="12_nr8wp"]
 [ext_resource type="Texture2D" uid="uid://bt8fmwno5t1ng" path="res://art/back/nature_5/3.png" id="13_d2bti"]
 [ext_resource type="PackedScene" uid="uid://c7qybbvhxfsga" path="res://player_2npc.tscn" id="14_nr8wp"]
+[ext_resource type="PackedScene" uid="uid://dobor5tf5t353" path="res://tree_main_scene.tscn" id="18_k73cj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
 texture = ExtResource("3_0hol4")
@@ -843,6 +844,10 @@ motion_mirroring = Vector2(550, 0)
 [node name="grass" type="Sprite2D" parent="BG/ParallaxLayer3"]
 position = Vector2(287, 162)
 texture = ExtResource("13_d2bti")
+
+[node name="Sprite2D" parent="." instance=ExtResource("18_k73cj")]
+z_index = -1
+position = Vector2(595, 360)
 
 [connection signal="timeout" from="Collect/Timer" to="Collect" method="_on_timer_timeout"]
 [connection signal="timeout" from="DayNight" to="." method="_on_day_night_timeout"]

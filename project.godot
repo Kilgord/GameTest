@@ -67,6 +67,7 @@ toggle_chat={
 2d_physics/layer_5="playerHurtBox"
 2d_physics/layer_6="enemyHurtBox"
 2d_physics/layer_7="npcDialog"
+2d_physics/layer_8="teleport_level"
 
 [rendering]
 

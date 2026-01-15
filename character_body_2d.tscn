@@ -1177,7 +1177,7 @@ occluder = SubResource("OccluderPolygon2D_1kp85")
 
 [node name="HurtBox" parent="AttackDirection/DamageBox" index="0"]
 collision_layer = 16
-collision_mask = 64
+collision_mask = 192
 
 [node name="HitBox" parent="AttackDirection/DamageBox" index="1"]
 collision_layer = 0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://co4865oo4aorv"]
+
+[ext_resource type="PackedScene" uid="uid://bwu25n6xdheb8" path="res://jungle_tree_2.tscn" id="1_vsgty"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="JungleTree2" parent="." instance=ExtResource("1_vsgty")]
