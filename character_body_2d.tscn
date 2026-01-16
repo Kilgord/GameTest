@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://brr56div76mri" path="res://Music/Player/player_hurt.MP3" id="22_skrk8"]
 [ext_resource type="AudioStream" uid="uid://dnageyb1rjpue" path="res://Music/Player/player)hurt2.MP3" id="23_ye16i"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skrk8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skrk8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ct3r"]
 atlas = ExtResource("1_lhvu3")
@@ -1142,9 +1142,9 @@ collision_layer = 2
 script = ExtResource("1_1kp85")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-scale = Vector2(0.32, 0.4)
-shape = SubResource("CapsuleShape2D_skrk8")
+position = Vector2(4.33681e-19, -1)
+scale = Vector2(0.32, 0.6)
+shape = SubResource("RectangleShape2D_skrk8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3.63798e-12, -2)
@@ -1155,7 +1155,8 @@ autoplay = "idle"
 frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6.24, 6.24)
+scale = Vector2(1, 1.48)
+zoom = Vector2(4, 4)
 process_callback = 0
 limit_bottom = 420
 position_smoothing_enabled = true

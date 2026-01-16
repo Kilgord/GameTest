@@ -15,10 +15,10 @@ enum {
 	
 }
 
-const SPEED = 100.0
-const ACCEL = 500.0  # Ускорение для плавного старта
-const DECEL = 600.0  # Торможение
-const JUMP_VELOCITY = -250.0
+const SPEED = 80.0
+const ACCEL = 200.0  # Ускорение для плавного старта
+const DECEL = 800.0  # Торможение
+const JUMP_VELOCITY = -260.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

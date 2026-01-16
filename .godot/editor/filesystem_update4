@@ -1,11 +1,9 @@
 res://main_menu.tscn
 res://art/Tileset_Jungle.tres
-res://node_2d.tscn
 res://scene_2.tscn
-res://character_body_2d.tscn
 res://player_2npc.tscn
 res://SceneChanger.tscn
-res://scene_changer.gd
-res://ы.tscn
-res://area_2d_main.gd
+res://node_2d.tscn
 res://tree_main_scene.tscn
+res://character_body_2d.tscn
+res://character_body_2d.gd
