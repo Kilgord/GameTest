@@ -1,13 +1,10 @@
-res://SceneChanger.tscn
-res://art/Tileset_Jungle.tres
-res://player_2_npc.gd
-res://Dialog/dialog_ui.gd
 res://main_menu.tscn
+res://art/Tileset_Jungle.tres
 res://scene_2.tscn
 res://player_2npc.tscn
+res://SceneChanger.tscn
 res://tree_main_scene.tscn
 res://coin.tscn
-res://character_body_2d.gd
-res://coin.gd
 res://character_body_2d.tscn
 res://node_2d.tscn
+res://raveParty.tscn
