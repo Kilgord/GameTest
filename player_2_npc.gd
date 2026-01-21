@@ -20,6 +20,7 @@ var state: int = IDLE:
 @onready var idicator = $Dialog/ramka
 @onready var animPlayerE = $Dialog/ramka/e/AnimationPlayer
 @onready var click = $Dialog/ramka/e
+@export var dialogue_file: DialogueResource
 
 const DialogScene = preload("res://Dialog/dialog_ui.tscn")  
 var dialog_instance = null
@@ -105,13 +106,14 @@ func open_dialog():
 	print("📖 Открываю диалог...")
 	
 	# Создаем экземпляр сцены
-	dialog_instance = DialogScene.instantiate()
+	var dialog_instance = DialogScene.instantiate()
+	
 	
 	# Добавляем на сцену (в корень)
 	get_tree().get_root().add_child(dialog_instance)
 	
 	# Устанавливаем текст
-	set_dialog_text("Привет! Я NPC.")
+	dialog_instance.start_dialog(dialogue_file, "start")
 	
 	print("✅ Диалог открыт")
 func close_dialog():

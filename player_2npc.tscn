@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7qybbvhxfsga"]
+[gd_scene load_steps=24 format=3 uid="uid://c7qybbvhxfsga"]
 
 [ext_resource type="Script" uid="uid://mk4fashfraht" path="res://player_2_npc.gd" id="1_rwa7h"]
 [ext_resource type="Texture2D" uid="uid://c44faekala0cv" path="res://art/Sprites/Eleonore/Idle/Idle1.png" id="1_t1yfh"]
+[ext_resource type="Resource" uid="uid://cqqxwr86ahxib" path="res://Dialog/test_dialogue.dialogue" id="2_o81ti"]
 [ext_resource type="Texture2D" uid="uid://cud5pkp5wadys" path="res://art/Sprites/Eleonore/Idle/Idle2.png" id="2_rwa7h"]
 [ext_resource type="Texture2D" uid="uid://1erkbtunbccb" path="res://art/Sprites/Eleonore/Idle/Idle3.png" id="3_wudok"]
 [ext_resource type="Texture2D" uid="uid://dgyb2moelymnp" path="res://art/Sprites/Eleonore/Idle/Idle4.png" id="4_io1cn"]
@@ -130,6 +131,7 @@ radius = 12.0
 [node name="player2" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_rwa7h")
+dialogue_file = ExtResource("2_o81ti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)

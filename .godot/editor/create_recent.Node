@@ -1,9 +1,11 @@
+AudioStreamPlayer
+AudioStreamPlayer2D
+Area2D
+CollisionShape2D
 Sprite2D
 TileMapLayer
 AnimatedSprite2D
 Parallax2D
-CollisionShape2D
-Area2D
 CanvasLayer
 Node
 Control
@@ -11,4 +13,3 @@ AnimationPlayer
 Polygon2D
 ColorRect
 ParallaxLayer
-RichTextLabel

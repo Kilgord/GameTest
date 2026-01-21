@@ -127,7 +127,7 @@ func move_state(delta: float):
 			else:  # Ещё катится по инерции
 				animPlayer.play("walk")
 			
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			jump_count = 1

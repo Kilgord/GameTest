@@ -1443,7 +1443,7 @@ position = Vector2(-224, 124)
 scale = Vector2(2.25812, 2.30011)
 
 [node name="Player" type="Node2D" parent="."]
-z_index = 1
+z_index = 3
 position = Vector2(0, 50)
 scale = Vector2(0.99684, 0.862859)
 
