@@ -1138,6 +1138,7 @@ stream_0/stream = ExtResource("22_skrk8")
 stream_1/stream = ExtResource("23_ye16i")
 
 [node name="Playes" type="CharacterBody2D"]
+z_index = 3
 collision_layer = 2
 script = ExtResource("1_1kp85")
 
@@ -1158,7 +1159,7 @@ frame = 3
 scale = Vector2(1, 1.48)
 zoom = Vector2(4, 4)
 process_callback = 0
-limit_bottom = 420
+limit_bottom = 1005
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 drag_horizontal_enabled = true
