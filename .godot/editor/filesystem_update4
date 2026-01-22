@@ -8,3 +8,6 @@ res://coin.tscn
 res://character_body_2d.tscn
 res://node_2d.tscn
 res://raveParty.tscn
+res://totem.gd
+res://raveParty.gdshader
+res://raveParty1.gdshader

@@ -1,8 +1,11 @@
-shader_type canvas_item; // Это шейдер для 2D-объектов
+shader_type canvas_item;
 
 uniform float hue_variation : hint_range(0.0, 1.0) = 0.0;
 uniform float saturation_variation : hint_range(0.0, 2.0) = 1.0;
 uniform float brightness_variation : hint_range(0.0, 2.0) = 1.0;
+
+uniform float pixel_stretch : hint_range(0.0, 1.0) = 0.0; // Новый параметр!
+uniform float pixel_stretch_direction : hint_range(0.0, 1.0) = 0.0; // 0=horizontal, 1=vertical
 
 vec3 rgb_to_hsv(vec3 color) {
     float max_val = max(color.r, max(color.g, color.b));
@@ -44,24 +47,30 @@ vec3 hsv_to_rgb(vec3 color) {
     if (i == 3.0) return vec3(p, q, v);
     if (i == 4.0) return vec3(t, p, v);
     if (i == 5.0) return vec3(v, p, q);
-    return vec3(v, t, p); // Should not happen
+    return vec3(v, t, p);
 }
 
 void fragment() {
-    // Получаем цвет текущего пикселя спрайта
-    vec4 color = texture(TEXTURE, UV);
+    // Рассчитываем силу расслоения (аберрации)
+    float aberration = pixel_stretch * 0.05; 
     
-    // Преобразуем RGB в HSV
+    vec2 uv_r = UV + vec2(aberration, 0.0);
+    vec2 uv_b = UV - vec2(aberration, 0.0);
+    
+    // Берем разные каналы цвета с разным смещением
+    float r = texture(TEXTURE, uv_r).r;
+    float g = texture(TEXTURE, UV).g;
+    float b = texture(TEXTURE, uv_b).b;
+    float a = texture(TEXTURE, UV).a;
+
+    vec4 color = vec4(r, g, b, a);
+    
+    // Твой старый код HSV
     vec3 hsv = rgb_to_hsv(color.rgb);
+    hsv.r = mod(hsv.r + hue_variation, 1.0);
+    hsv.g *= saturation_variation;
+    hsv.b *= brightness_variation;
     
-    // Применяем изменения тона, насыщенности и яркости
-    hsv.r = mod(hsv.r + hue_variation, 1.0); // Изменяем тон (hue)
-    hsv.g *= saturation_variation; // Изменяем насыщенность
-    hsv.b *= brightness_variation; // Изменяем яркость
-    
-    // Преобразуем обратно в RGB
     color.rgb = hsv_to_rgb(hsv);
-    
-    // Применяем финальный цвет к пикселю
     COLOR = color;
 }
