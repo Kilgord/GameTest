@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://bsfnwlvxpf2yq"]
 
 [ext_resource type="Texture2D" uid="uid://bij81vomuobio" path="res://backgroundjungle.jpg" id="1_4bgvd"]
-[ext_resource type="Texture2D" uid="uid://ys76botdoget" path="res://art/Jojo Jungle Pack v1/SpriteSheets/background/jungle_tree1.png" id="2_aqujb"]
+[ext_resource type="Texture2D" uid="uid://073pp37rm2ca" path="res://door.png" id="2_4ia8e"]
 [ext_resource type="Shader" uid="uid://cj25jwv7nfjub" path="res://custom-tilemap.gdshader" id="2_f618r"]
 [ext_resource type="Script" uid="uid://c06bmhbhx8h7y" path="res://area_2d.gd" id="3_4ia8e"]
 [ext_resource type="TileSet" uid="uid://bw1xiio1alrjg" path="res://art/Tileset_Jungle.tres" id="3_aqujb"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b75b72ek7g8hi" path="res://apple_teleport.gd" id="5_fcxcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryt5m"]
-size = Vector2(19.724, 45.3028)
+size = Vector2(162.689, 207.635)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4bgvd"]
 shader = ExtResource("2_f618r")
@@ -30,9 +30,9 @@ scale = Vector2(1.11509, 1.19375)
 texture = ExtResource("1_4bgvd")
 
 [node name="JungleTree1" type="Sprite2D" parent="."]
-position = Vector2(178.231, -9.79021)
-scale = Vector2(1.3106, 1.35838)
-texture = ExtResource("2_aqujb")
+position = Vector2(191.042, 1.7704)
+scale = Vector2(0.200709, 0.202075)
+texture = ExtResource("2_4ia8e")
 
 [node name="Area2D" type="Area2D" parent="JungleTree1"]
 light_mask = 3
@@ -42,7 +42,7 @@ collision_mask = 16
 script = ExtResource("3_4ia8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JungleTree1/Area2D"]
-position = Vector2(-0.519058, 1.02961)
+position = Vector2(-2.8194, -1.83989)
 shape = SubResource("RectangleShape2D_ryt5m")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

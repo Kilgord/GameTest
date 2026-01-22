@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b373mhn3anldy"]
+[gd_scene load_steps=16 format=4 uid="uid://b373mhn3anldy"]
 
 [ext_resource type="Script" uid="uid://dtaqb54u2xv6i" path="res://totem.gd" id="1_otaio"]
 [ext_resource type="Texture2D" uid="uid://dmw413ep4gdqs" path="res://totem.png" id="2_orcdl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dt0ur3vo62rl5" path="res://art/craftpix-net-846754-free-green-zone-tileset-pixel-art/Tileset.png" id="6_p2kr6"]
 [ext_resource type="PackedScene" uid="uid://du6fkhgr3jg2k" path="res://character_body_2d.tscn" id="7_w5u6c"]
 [ext_resource type="Shader" uid="uid://cdutv4ofeqcc8" path="res://raveParty1.gdshader" id="8_p2kr6"]
+[ext_resource type="Texture2D" uid="uid://bg1c75f2t2ei5" path="res://Tree.png" id="9_w5u6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2kr6"]
 size = Vector2(26, 81)
@@ -647,3 +648,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(446, 568)
+scale = Vector2(0.199998, 0.142637)
+texture = ExtResource("9_w5u6c")

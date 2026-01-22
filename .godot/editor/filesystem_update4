@@ -1,5 +1,7 @@
 res://main_menu.tscn
 res://art/Tileset_Jungle.tres
+res://raveParty.gdshader
+res://raveParty1.gdshader
 res://scene_2.tscn
 res://player_2npc.tscn
 res://SceneChanger.tscn
@@ -9,5 +11,3 @@ res://character_body_2d.tscn
 res://node_2d.tscn
 res://raveParty.tscn
 res://totem.gd
-res://raveParty.gdshader
-res://raveParty1.gdshader

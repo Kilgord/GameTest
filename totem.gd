@@ -31,7 +31,7 @@ func _process(_delta):
 		
 		# 2. Вращение всей сцены (rotation)
 		# Раскачиваем камеру по синусоиде, амплитуда зависит от madness_level
-		camera_ref.rotation = sin(Time.get_ticks_msec() * 0.002) * (0.3 * madness_level)
+		camera_ref.rotation = sin(Time.get_ticks_msec() * 0.002) * (0.1 * madness_level)
 
 	# 3. Передаем параметры в шейдер бога (растягивание и аберрация)
 	if sprite_god.material:
