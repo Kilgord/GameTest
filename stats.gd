@@ -10,7 +10,7 @@ var attack_cost = 10
 var block_cost = 1
 var run_cost = 1
  
-var energy = 100:
+var energy = 700:
 	set(value):
 		energy = value
 		if energy < 1:
