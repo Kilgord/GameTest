@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clk2msjroqffd"
-path="res://.godot/imported/AztekGod.png-751d62012743f4e256c2fc6ca3cfc450.ctex"
+uid="uid://2inhqepp673t"
+path="res://.godot/imported/fence.png-459e2451c79a09a5b23fb58cc9a7be21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AztekGod.png"
-dest_files=["res://.godot/imported/AztekGod.png-751d62012743f4e256c2fc6ca3cfc450.ctex"]
+source_file="res://fence.png"
+dest_files=["res://.godot/imported/fence.png-459e2451c79a09a5b23fb58cc9a7be21.ctex"]
 
 [params]
 

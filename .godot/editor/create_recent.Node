@@ -1,3 +1,6 @@
+Polygon2D
+MeshInstance2D
+TextureRect
 Sprite2D
 ColorRect
 CanvasLayer
@@ -10,5 +13,3 @@ CollisionShape2D
 TileMapLayer
 AnimatedSprite2D
 Parallax2D
-Node
-Control

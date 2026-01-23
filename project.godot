@@ -12,7 +12,9 @@ config_version=5
 
 config/name="sad"
 run/main_scene="uid://cbnaoa5qbbx6s"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.1068239, 0.20213678, 0.31756127, 1)
+boot_splash/image="uid://clk2msjroqffd"
 config/icon="res://icon.svg"
 
 [autoload]
