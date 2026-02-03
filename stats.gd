@@ -4,12 +4,16 @@ signal no_energy ()
 
 @onready var health_bar = $HealthBar
 @onready var energy_bar = $Energy
+@onready var gold_bar = $coins/gold_staatus
 
 var energy_cost
 var attack_cost = 10
 var block_cost = 1
 var run_cost = 1
- 
+
+
+	
+
 var energy = 700:
 	set(value):
 		energy = value
@@ -23,10 +27,12 @@ var health:
 		health_bar.value = health
 
 func _ready() -> void:
+	Signals.get_gold.connect(gold_get)
 	health = max_health
 	health_bar.max_value = health
 	health_bar.value = health
-
+	
+	
 func _process(delta: float) -> void:
 	energy_bar.value = energy
 	if energy < 100:
@@ -34,3 +40,7 @@ func _process(delta: float) -> void:
 
 func energy_consuption ():
 	energy -= energy_cost
+
+func gold_get(coins):
+	var coin = coins
+	gold_bar.text = str(coin)
