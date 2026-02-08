@@ -1444,9 +1444,9 @@ stretch_mode = 1
 z_index = 7
 offset_left = -1441.0
 offset_top = -30.0
-offset_right = -390.64954
+offset_right = -390.65
 offset_bottom = 57.0
-scale = Vector2(0.46517015, 0.46517015)
+scale = Vector2(0.46517, 0.46517)
 texture = ExtResource("13_ebxd8")
 stretch_mode = 1
 
@@ -1454,8 +1454,8 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_2u7jv")
 offset_left = -1441.0
 offset_top = -42.0
-offset_right = -455.00012
-offset_bottom = 67.35553
+offset_right = -455.0
+offset_bottom = 67.3555
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_2hxjc")
 stretch_mode = 1
@@ -1475,10 +1475,10 @@ texture = ExtResource("10_2nhjh")
 z_index = 4
 material = SubResource("ShaderMaterial_kq1c5")
 position = Vector2(-1560, -26)
-scale = Vector2(0.4416966, 0.332851)
+scale = Vector2(0.441697, 0.332851)
 texture = ExtResource("12_2hxjc")
-polygon = PackedVector2Array(-2.2350464, 3.46772, -5.240326, 102.6413, 263.7304, 102.6413, 260.72516, -4.7967453)
-uv = PackedVector2Array(-2.2350464, 3.46772, -5.240326, 102.6413, 263.7304, 102.6413, 260.72516, -4.7967453)
+polygon = PackedVector2Array(-2.23505, 3.46772, -5.24033, 102.641, 263.73, 102.641, 260.725, -4.79675)
+uv = PackedVector2Array(-2.23505, 3.46772, -5.24033, 102.641, 263.73, 102.641, 260.725, -4.79675)
 script = ExtResource("16_24dk6")
 player_node = NodePath("../../Player")
 
@@ -1538,7 +1538,7 @@ scale = Vector2(0.99684, 0.862859)
 
 [node name="CharacterBody2D" parent="Player" instance=ExtResource("1_wtcfe")]
 z_index = 1
-position = Vector2(-562.7784, 329.13837)
+position = Vector2(-562.778, 329.138)
 scale = Vector2(2.02869, 2.32908)
 floor_max_angle = 1.07163
 floor_snap_length = 0.0

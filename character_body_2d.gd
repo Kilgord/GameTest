@@ -271,7 +271,9 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		current_npc_area = area
 		print("✅ Рядом с NPC!")
 		print("   Нажмите E для диалога")
-	
+	elif area.name == "Shop":
+		near_npc = true
+		print("Я у магазина")
 	
 func _on_hurt_box_area_exited(area: Area2D) -> void:
 	print("\n🎮 Выход из зоны:", area.name)

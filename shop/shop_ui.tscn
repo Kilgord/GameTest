@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://deegccrpnke05"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvqoa"]
+font_size = 36
+
+[node name="Shop_ui" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 211.0
+offset_top = 22.0
+offset_right = 1005.0
+offset_bottom = 584.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 794.0
+offset_bottom = 565.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Магазин дядюшки Пиккули"
+label_settings = SubResource("LabelSettings_yvqoa")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b18vcqslm2wyk"]
+
+[ext_resource type="Texture2D" uid="uid://bm5476044mmx8" path="res://art/bar/Pixel Health Bar/Bar/empty health bar.png" id="1_74t8q"]
+[ext_resource type="Script" uid="uid://by5ktdfw2mmlr" path="res://stats.gd" id="1_adv4l"]
+[ext_resource type="Texture2D" uid="uid://cifoe3pfaa5qs" path="res://art/bar/Pixel Health Bar/Health/health.png" id="2_adv4l"]
+[ext_resource type="Texture2D" uid="uid://cafwryik8lfug" path="res://art/Sprites/Sprite-0003.png" id="4_r4or0"]
+[ext_resource type="Texture2D" uid="uid://yutf5icyp7uf" path="res://art/Sprites/Sprite-0002.png" id="5_af2q3"]
+[ext_resource type="Texture2D" uid="uid://bw2u207ym6i6l" path="res://Gold.png" id="6_af2q3"]
+
+[node name="stats" type="CanvasLayer"]
+script = ExtResource("1_adv4l")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+light_mask = 0
+offset_left = 26.0
+offset_top = 19.0
+offset_right = 154.0
+offset_bottom = 37.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_74t8q")
+texture_progress = ExtResource("2_adv4l")
+
+[node name="Energy" type="TextureProgressBar" parent="."]
+light_mask = 0
+offset_left = 11.0
+offset_top = 36.0
+offset_right = 169.0
+offset_bottom = 64.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_r4or0")
+texture_progress = ExtResource("5_af2q3")
+tint_progress = Color(1, 1, 0.537255, 1)
+
+[node name="coins" type="TextureRect" parent="."]
+offset_left = 20.0
+offset_top = 61.0
+offset_right = 60.0
+offset_bottom = 101.0
+texture = ExtResource("6_af2q3")
+
+[node name="gold_staatus" type="Label" parent="coins"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 7.0
+offset_right = 126.0
+offset_bottom = 30.0

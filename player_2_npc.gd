@@ -106,7 +106,7 @@ func open_dialog():
 	print("📖 Открываю диалог...")
 	
 	# Создаем экземпляр сцены
-	var dialog_instance = DialogScene.instantiate()
+	dialog_instance = DialogScene.instantiate()
 	
 	
 	# Добавляем на сцену (в корень)

@@ -1156,6 +1156,7 @@ autoplay = "idle"
 frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -16)
 scale = Vector2(1, 1.48)
 zoom = Vector2(4, 4)
 process_callback = 0
@@ -1209,6 +1210,7 @@ volume_db = -10.0
 pitch_scale = 0.88
 
 [connection signal="area_entered" from="AttackDirection/DamageBox/HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="AttackDirection/DamageBox/HurtBox" to="." method="_on_hurt_box_area_exited"]
 [connection signal="area_entered" from="AttackDirection/DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="no_energy" from="stats" to="." method="_on_stats_no_energy"]
 

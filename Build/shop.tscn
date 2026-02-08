@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdcdx33q82wf5"]
+[gd_scene load_steps=14 format=3 uid="uid://cdcdx33q82wf5"]
 
+[ext_resource type="Script" uid="uid://5vifyfu7epot" path="res://shop/shop.gd" id="1_jxx1l"]
 [ext_resource type="Texture2D" uid="uid://dqtvgpy6nb2wn" path="res://art/oak_woods_v1.0/decorations/shop_anim.png" id="1_lpta5"]
+[ext_resource type="Shader" uid="uid://cj25jwv7nfjub" path="res://custom-tilemap.gdshader" id="3_ndq8e"]
+[ext_resource type="Texture2D" uid="uid://ciad70fwa47vb" path="res://shop/5208634027185738345.jpg" id="4_83exo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxx1l"]
 radius = 37.2156
@@ -55,7 +58,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n27ny"]
+shader = ExtResource("3_ndq8e")
+
 [node name="Shop" type="Area2D"]
+collision_layer = 65
+collision_mask = 2
+script = ExtResource("1_jxx1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(229, 78)
@@ -67,3 +76,10 @@ scale = Vector2(0.440678, 0.440678)
 sprite_frames = SubResource("SpriteFrames_khgxt")
 autoplay = "default"
 frame_progress = 0.537499
+
+[node name="banknota" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_n27ny")
+position = Vector2(228, 50)
+scale = Vector2(0.0285543, 0.0285543)
+texture = ExtResource("4_83exo")

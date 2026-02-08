@@ -6,10 +6,10 @@ extends Area2D
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	print("Триггерная зона готова")
+	
 	
 func _on_body_entered(body: Node) -> void:
-	print("Обнаружена область:", body.name)
+	
 	if body.name == "CharacterBody2D":
 		coin.visible = false
 		set_deferred("monitoring", false)

@@ -19,7 +19,7 @@ corner_radius_bottom_left = 10
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_5tlyb"]
-font_size = 24
+font_size = 32
 
 [node name="InventoryUI" type="CanvasLayer"]
 layer = 10
