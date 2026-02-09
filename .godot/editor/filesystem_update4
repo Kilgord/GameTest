@@ -1,0 +1,14 @@
+res://main_menu.tscn
+res://shop/shop_slot.tscn
+res://shop/shop_ui.tscn
+res://shop/shop.tscn
+res://scripts/Global.gd
+res://scripts/shop_inventar.gd
+res://shop/shop_slot.gd
+res://shop/shopmenu.gd
+res://shop/Menu.gd
+res://shop/shop_vizov.gd
+res://character_body_2d.tscn
+res://shop/shop.gd
+res://Inventar/inventory_ui.tscn
+res://node_2d.tscn

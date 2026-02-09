@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var banknota = $banknota
 
-const DialogScene = preload("res://shop/shop_ui.tscn")  
+const DialogScene = preload("res://shop/shop.tscn")  
 var dialog_instance = null
 
 func _ready() -> void:

@@ -1,0 +1,25 @@
+{
+  "consumables_health_potion": {
+    "name": "Зелье здоровья",
+    "description": "Прибавляет +5 к здоровью",
+    "icon": "health_icon.png",
+    "stackable": true,
+    "quantity": 1
+  },
+
+  "consumables_energy_potion": {
+    "name": "Зелье энергии",
+    "description": "Энергия не тратится 30 секунд",
+    "icon": "energy_icon.png",
+    "stackable": true,
+    "quantity": 1
+  },
+  
+  "consumables_bomb": {
+    "name": "Bomb",
+    "description": "Взрывает врагов и помогает находить секреты",
+    "icon": "bomb.png",
+    "stackable": true,
+    "quantity": 1
+  }
+}

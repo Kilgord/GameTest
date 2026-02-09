@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://coemdqi8glm8m"]
+
+[ext_resource type="PackedScene" uid="uid://deegccrpnke05" path="res://shop/shop_ui.tscn" id="1_r2p71"]
+
+[node name="Shop" type="CanvasLayer"]
+
+[node name="shop_ui" parent="." instance=ExtResource("1_r2p71")]
+offset_right = -5.0
+scale = Vector2(1.00345, 1.00542)
+
+[editable path="shop_ui"]
