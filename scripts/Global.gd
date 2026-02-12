@@ -1,14 +1,16 @@
 extends Node
 
 var items
+var key_items = []
 
 func _ready() -> void:
 	items = read_from_JSON("res://gamesobject/collectibles.json")
 	# Возвращаем массив всех ключей словаря из json
 	for key in items.keys():
 		items[key]["key"] = key 
-	
-
+		key_items.append(key)
+		
+		
 func read_from_JSON(path: StringName):
 	var file
 	var data

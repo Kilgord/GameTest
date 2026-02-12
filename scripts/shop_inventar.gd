@@ -10,9 +10,8 @@ var items: Array = []
 func _ready() -> void:
 	for i in range(slots):
 		items.append({})
-	items[0] = Global.get_item_by_key("consumables_health_potion")
-	items[1] = Global.get_item_by_key("consumables_energy_potion")
-	items[2] = Global.get_item_by_key("consumables_bomb")
+		items[i] = Global.get_item_by_key(Global.key_items[i])
+	
 	
 func set_item(index, item):
 	var previos_item = items[index] # Сохраняем старый предмет

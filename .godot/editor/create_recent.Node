@@ -1,8 +1,9 @@
+TextureRect
+Panel
 Button
 SpinBox
 CanvasLayer
 GridContainer
 PanelContainer
 Label
-TextureRect
 ColorRect
