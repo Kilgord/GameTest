@@ -8,8 +8,17 @@
 offset_right = -5.0
 scale = Vector2(1.00345, 1.00542)
 
+[node name="shop_container" parent="shop_ui" index="0"]
+offset_left = -224.226
+offset_top = -213.841
+offset_right = 275.774
+offset_bottom = 136.159
+
 [node name="shopmenu" parent="shop_ui" index="1"]
-offset_left = -218.0
-offset_right = 461.0
+offset_left = -193.333
+offset_top = -167.094
+offset_right = 485.667
+offset_bottom = 206.906
+scale = Vector2(0.642419, 0.69028)
 
 [editable path="shop_ui"]

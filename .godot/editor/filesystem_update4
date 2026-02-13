@@ -5,3 +5,5 @@ res://shop/shop.tscn
 res://character_body_2d.tscn
 res://Inventar/inventory_ui.tscn
 res://node_2d.tscn
+res://shop/Menu.gd
+res://shop/shop_slot.gd

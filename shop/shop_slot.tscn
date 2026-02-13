@@ -1,129 +1,109 @@
-[gd_scene load_steps=18 format=3 uid="uid://coufn6sva5jf"]
+[gd_scene load_steps=4 format=3 uid="uid://coufn6sva5jf"]
 
 [ext_resource type="Script" uid="uid://chm4mbyavdhxn" path="res://shop/shop_slot.gd" id="1_11aom"]
-[ext_resource type="Texture2D" uid="uid://ctjntc6ov2md8" path="res://shop/GUI_shop_item_icon.png" id="2_nbrvu"]
-[ext_resource type="Texture2D" uid="uid://cunrwhi6mdorw" path="res://shop/GUI_shop_button_down_pressed.png" id="2_qiyku"]
-[ext_resource type="Texture2D" uid="uid://bm051f4exyncj" path="res://shop/GUI_shop_button_up_pressed.png" id="3_nbrvu"]
-[ext_resource type="Texture2D" uid="uid://dxfrcx5qwwa7p" path="res://shop/GUI_shop_item_description.png" id="3_wwlif"]
-[ext_resource type="FontFile" uid="uid://h87kg2m152i3" path="res://AI/Tiny5-Regular.ttf" id="4_3vrfu"]
-[ext_resource type="Texture2D" uid="uid://ciodvkvx1td3l" path="res://shop/GUI_shop_item_price_for_one.png" id="4_e7ujn"]
-[ext_resource type="Texture2D" uid="uid://6448qu6g7pgq" path="res://shop/GUI_shop_item_value.png" id="5_ucsxy"]
-[ext_resource type="Texture2D" uid="uid://ciuo8dukfp3hn" path="res://shop/GUI_shop_item_up_down.png" id="6_pe0xy"]
-[ext_resource type="Texture2D" uid="uid://c6x04188tkc0m" path="res://shop/GUI_shop_item_full price.png" id="9_3vrfu"]
+[ext_resource type="Texture2D" uid="uid://vdyexkn27exf" path="res://shop/GUI_shop_item.png" id="2_kx6kd"]
 
 [sub_resource type="Theme" id="Theme_qiyku"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pe0xy"]
-texture = ExtResource("3_wwlif")
-
-[sub_resource type="LabelSettings" id="LabelSettings_e7ujn"]
-font = ExtResource("4_3vrfu")
-font_size = 14
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cditi"]
-texture = ExtResource("4_e7ujn")
-
-[sub_resource type="LabelSettings" id="LabelSettings_ucsxy"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kl88"]
-texture = ExtResource("9_3vrfu")
-
-[sub_resource type="LabelSettings" id="LabelSettings_yd3pc"]
 
 [node name="ItemRect" type="ColorRect" groups=["items_slot"]]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -25.0
+offset_top = -71.0
 offset_right = 50.0
-offset_bottom = 25.0
+offset_bottom = -21.0
 grow_vertical = 2
 size_flags_horizontal = 8
 theme = SubResource("Theme_qiyku")
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_11aom")
 
-[node name="iconfont" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_top = -1.0
-offset_right = 56.0
-offset_bottom = 55.0
-texture = ExtResource("2_nbrvu")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_kx6kd")
 
-[node name="ItemIcon" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 1.02
-anchor_bottom = 1.02
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 2
-
-[node name="description" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.12
-anchor_right = 4.6
-anchor_bottom = 1.12
-offset_top = -1.0
-offset_right = 151.0
-offset_bottom = -1.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_pe0xy")
-label_settings = SubResource("LabelSettings_e7ujn")
-vertical_alignment = 1
-
-[node name="price_for_one" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 381.0
-offset_top = -1.0
-offset_right = 482.0
-offset_bottom = 55.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_cditi")
-label_settings = SubResource("LabelSettings_ucsxy")
+offset_right = 452.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
 
-[node name="count" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 521.0
-offset_top = -1.0
-offset_right = 557.0
-offset_bottom = 55.0
-texture = ExtResource("5_ucsxy")
 
-[node name="fontbuttons" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control"]
 layout_mode = 0
-offset_left = 482.0
-offset_top = -1.0
-offset_right = 522.0
-offset_bottom = 55.0
-texture = ExtResource("6_pe0xy")
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 37.0
 
-[node name="buttondown" type="TextureButton" parent="fontbuttons"]
+[node name="Control2" type="Control" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 5.0
-offset_top = 33.0
-offset_right = 36.0
-offset_bottom = 47.0
-texture_normal = ExtResource("2_qiyku")
 
-[node name="buttonup" type="TextureButton" parent="fontbuttons"]
-layout_mode = 2
-offset_left = 5.0
-offset_top = 8.0
-offset_right = 36.0
-offset_bottom = 23.0
-texture_normal = ExtResource("3_nbrvu")
-
-[node name="price_for_all" type="Label" parent="."]
+[node name="Label" type="Label" parent="HBoxContainer/Control2"]
 layout_mode = 0
-offset_left = 555.0
-offset_top = -1.0
-offset_right = 660.0
-offset_bottom = 55.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_6kl88")
-label_settings = SubResource("LabelSettings_yd3pc")
+offset_left = 36.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 37.0
+
+[node name="Control3" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Control3"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 4.0
+offset_right = 298.0
+offset_bottom = 27.0
+scale = Vector2(1.96653, 1.39521)
+
+[node name="Control4" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/Control4"]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 3.0
+offset_right = 348.0
+offset_bottom = 11.0
+scale = Vector2(3.82815, 2.23587)
+
+[node name="Control5" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/Control5"]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 20.0
+offset_right = 348.0
+offset_bottom = 28.0
+scale = Vector2(3.82815, 2.23587)
+
+[node name="Control6" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Control6"]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 3.0
+offset_right = 414.0
+offset_bottom = 26.0
+scale = Vector2(0.341509, 1.45754)
+
+[node name="Control7" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Control7"]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 3.0
+offset_right = 431.0
+offset_bottom = 26.0
+scale = Vector2(1.43834, 1.42655)

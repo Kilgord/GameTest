@@ -1,5 +1,7 @@
+Button
+Control
 Label
 TextureRect
+HBoxContainer
 VBoxContainer
 TextureButton
-HBoxContainer
