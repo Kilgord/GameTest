@@ -1,0 +1,7 @@
+res://main_menu.tscn
+res://shop/shop_ui.tscn
+res://shop/shop_slot.tscn
+res://shop/shop.tscn
+res://character_body_2d.tscn
+res://Inventar/inventory_ui.tscn
+res://node_2d.tscn
