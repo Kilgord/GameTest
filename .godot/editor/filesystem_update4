@@ -1,13 +1,9 @@
+res://Inventar/scene/items_slot.tscn
 res://main_menu.tscn
 res://shop/shop_ui.tscn
 res://shop/shop_slot.tscn
 res://shop/shop.tscn
-res://Inventar/scene/items_slot.tscn
 res://Inventar/scene/drag_preview.tscn
 res://Inventar/scene/Menu.tscn
 res://Inventar/scene/inventory.tscn
-res://shop/shop_slot.gd
-res://scripts/shop_inventar.gd
-res://signals.gd
 res://Inventar/Inventory.gd
-res://shop/shop.gd

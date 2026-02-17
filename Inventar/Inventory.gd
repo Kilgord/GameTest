@@ -11,20 +11,23 @@ var n = 0
 func _ready():
 	for i in range(slots):
 		items.append({})
-
 	Signals.add_inventar.connect(add_inventary)
 	
 	
 func add_inventary(cart):
+	var changed_indexes = []
 	for keys in Global.items.keys():
 		var item_name = Global.items[keys]["name"]
 		if item_name in cart:
 			print(item_name)
+			print(cart[item_name])
 			items[n] = Global.get_item_by_key(keys)
+			changed_indexes.append(n)
 			n+=1
-	
+	if not changed_indexes.is_empty():
+		items_changed.emit(changed_indexes)	
+
 		
-	
 		
 func set_item(index, item):
 	var previos_item = items[index]
