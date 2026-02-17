@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn0iyvd0f8ri8"]
+
+[ext_resource type="PackedScene" uid="uid://cilsxn6f16m2a" path="res://Inventar/scene/inventory.tscn" id="1_f00i1"]
+[ext_resource type="Script" uid="uid://btm6mjv4mtohu" path="res://Inventar/menu.gd" id="1_xp1gs"]
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_xp1gs")
+
+[node name="Inventory" parent="." instance=ExtResource("1_f00i1")]
+
+[editable path="Inventory"]

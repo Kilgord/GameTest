@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://coufn6sva5jf"]
+[gd_scene load_steps=20 format=3 uid="uid://coufn6sva5jf"]
 
 [ext_resource type="Script" uid="uid://chm4mbyavdhxn" path="res://shop/shop_slot.gd" id="1_11aom"]
 [ext_resource type="Texture2D" uid="uid://ctjntc6ov2md8" path="res://shop/GUI_shop_item_icon.png" id="2_nbrvu"]
@@ -24,6 +24,11 @@ font_size = 14
 texture = ExtResource("4_e7ujn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ucsxy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vrfu"]
+texture = ExtResource("5_ucsxy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6kl88"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kl88"]
 texture = ExtResource("9_3vrfu")
@@ -86,14 +91,20 @@ offset_right = 482.0
 offset_bottom = 55.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_cditi")
 label_settings = SubResource("LabelSettings_ucsxy")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="count" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = 521.0
+[node name="count" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 516.0
 offset_top = -1.0
-offset_right = 557.0
+offset_right = 556.0
 offset_bottom = 55.0
-texture = ExtResource("5_ucsxy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3vrfu")
+label_settings = SubResource("LabelSettings_6kl88")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="fontbuttons" type="TextureRect" parent="."]
 layout_mode = 0
@@ -120,6 +131,7 @@ offset_bottom = 23.0
 texture_normal = ExtResource("3_nbrvu")
 
 [node name="price_for_all" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 555.0
 offset_top = -1.0
@@ -127,3 +139,8 @@ offset_right = 660.0
 offset_bottom = 55.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_6kl88")
 label_settings = SubResource("LabelSettings_yd3pc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="fontbuttons/buttondown" to="." method="_on_buttondown_pressed"]
+[connection signal="pressed" from="fontbuttons/buttonup" to="." method="_on_buttonup_pressed"]

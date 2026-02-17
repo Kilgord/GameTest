@@ -26,7 +26,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animPlayer = $AnimationPlayer
 @onready var stats = $stats
 @onready var smack = $Sounds/Smack
-@onready var inventory_ui = preload("res://Inventar/inventory_ui.tscn")
+@onready var inventory_ui = preload("res://Inventar/scene/Menu.tscn")
 
 var gold = 0
 var state = MOVE

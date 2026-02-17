@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn0iyvd0f8ri8"]
+
+[ext_resource type="PackedScene" uid="uid://cilsxn6f16m2a" path="res://Inventar/scene/inventory.tscn" id="1_f00i1"]
+[ext_resource type="Script" uid="uid://plgkiwktx4xu" path="res://Inventar/menuInv.gd" id="1_xp1gs"]
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_xp1gs")
+
+[node name="Inventory" parent="." instance=ExtResource("1_f00i1")]
+anchor_left = 0.333
+anchor_top = 0.284
+anchor_right = 0.823
+anchor_bottom = 0.864
+offset_left = 0.384003
+offset_top = -0.0320129
+offset_right = -0.0960083
+offset_bottom = 6.12799
+
+[node name="InventoryContainer" parent="Inventory" index="0"]
+anchors_preset = -1
+anchor_left = -0.339
+anchor_top = -0.294
+anchor_right = 0.661
+anchor_bottom = 0.706
+offset_left = -0.174988
+offset_top = -0.0540009
+offset_right = -0.175018
+offset_bottom = -0.0540161
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="InventoryMenu" parent="Inventory/InventoryContainer" index="0"]
+columns = 1
+
+[editable path="Inventory"]

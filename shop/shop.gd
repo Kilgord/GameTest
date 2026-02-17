@@ -43,4 +43,5 @@ func close_shop():
 	if dialog_instance:
 		dialog_instance.queue_free()
 		dialog_instance = null
+		
 	

@@ -3,6 +3,7 @@
     "name": "Зелье здоровья",
     "description": "Прибавляет +5 к здоровью",
     "icon": "health_icon.png",
+	"price": 10,
     "stackable": true,
     "quantity": 1
   },
@@ -11,6 +12,7 @@
     "name": "Зелье энергии",
     "description": "Энергия не тратится 30 секунд",
     "icon": "energy_icon.png",
+	"price": 10,
     "stackable": true,
     "quantity": 1
   },
@@ -19,6 +21,7 @@
     "name": "Bomb",
     "description": "Взрывает врагов и помогает находить секреты",
     "icon": "bomb.png",
+	"price": 10,
     "stackable": true,
     "quantity": 1
   }

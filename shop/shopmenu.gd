@@ -4,6 +4,7 @@ class_name ContainerSlot
 var ItemSlot = load("res://shop/shop_slot.tscn")
 var slots
 
+
 func display_item_slot(cols: int, rows: int):
 	var item_slot
 	columns = cols  #Сохраняю количество колонок

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://brmordccu1eey"]
+
+[ext_resource type="Script" uid="uid://c1hqf538g7uro" path="res://Inventar/items_slot.gd" id="1_wrnv7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6an5"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="ItemRect" type="ColorRect" groups=["items_slot"]]
+custom_minimum_size = Vector2(58, 58)
+anchors_preset = -1
+anchor_left = 0.475
+anchor_top = 0.455
+anchor_right = 0.525
+anchor_bottom = 0.545
+offset_left = -0.200012
+offset_top = 0.160004
+offset_right = 0.199951
+offset_bottom = -0.160004
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wrnv7")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Count" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.802
+anchor_top = 0.802
+anchor_right = 0.802
+anchor_bottom = 0.802
+offset_left = -11.516
+offset_top = -11.516
+offset_right = 11.484
+offset_bottom = 11.484
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_f6an5")
+horizontal_alignment = 2
