@@ -8,6 +8,7 @@ var slots: int = cols * rows
 var items: Array = []
 var n = 0
 
+
 func _ready():
 	for i in range(slots):
 		items.append({})
@@ -19,11 +20,16 @@ func add_inventary(cart):
 	for keys in Global.items.keys():
 		var item_name = Global.items[keys]["name"]
 		if item_name in cart:
-			print(item_name)
-			print(cart[item_name])
+			print("имя",item_name)
+			print("кол-во", cart[item_name])
 			items[n] = Global.get_item_by_key(keys)
+			items[n].quantity = cart[item_name] 
+			print("items[n]", items[n])
+			print("quantity", items[n].quantity)
 			changed_indexes.append(n)
 			n+=1
+	
+			print(changed_indexes)
 	if not changed_indexes.is_empty():
 		items_changed.emit(changed_indexes)	
 
