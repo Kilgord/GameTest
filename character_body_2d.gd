@@ -27,6 +27,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var stats = $stats
 @onready var smack = $Sounds/Smack
 @onready var inventory_ui = preload("res://Inventar/scene/Menu.tscn")
+@onready var player = $"."
+@onready var door = $"../../Sprite2D"
+@onready var camera = $Camera2D
+@onready var box = $"../../box"
+@onready var ui_label = $ui
+
 
 var gold = 0
 var state = MOVE
@@ -48,6 +54,7 @@ var inventory_instance = null
 
 func _ready() -> void:
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
+	Signals.sobral_vse.connect(scripte_scene)
 	print("🎮 Для теста нажмите:")
 	print("   - E (ваша кнопка)")
 	print("   - ПРОБЕЛ (стандартная)")
@@ -340,3 +347,29 @@ func close_inventory() -> void:
 	
 	if inventory_instance:
 		inventory_instance.close()
+
+func scripte_scene():
+	player.set_physics_process(false)
+	player.velocity = Vector2.ZERO
+	animPlayer.play("idle")
+	
+	var original_camera_pos = camera.global_position
+	
+	var tween = create_tween().set_parallel(false)
+	var door_position  = door.global_position
+	tween.tween_property(camera, "global_position", door_position, 1.5)
+	await tween.finished
+	
+	box.visible = true
+	await get_tree().create_timer(1.0).timeout
+	
+	var tween_back = create_tween()
+	tween_back.tween_property(camera, "global_position", original_camera_pos, 1.0)
+	await tween_back.finished
+	
+	ui_label.text = "Вы собрали все монеты!"
+	ui_label.show()
+	await get_tree().create_timer(5.0).timeout
+	ui_label.hide() 
+	
+	player.set_physics_process(true)

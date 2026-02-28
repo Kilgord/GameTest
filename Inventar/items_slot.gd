@@ -6,7 +6,7 @@ extends ColorRect
 func display_item(item):
 	if item:
 		item_icon.texture = load("res://art/icon/%s" % item.icon)
-		item_quantity.text = str(item.quantity) if item.stackable else ""
+		item_quantity.text = str(int(item.quantity)) if item.stackable else ""
 		
 	else:
 		item_icon.texture = null

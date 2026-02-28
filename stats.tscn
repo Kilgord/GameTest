@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b18vcqslm2wyk"]
+[gd_scene load_steps=8 format=3 uid="uid://b18vcqslm2wyk"]
 
 [ext_resource type="Texture2D" uid="uid://bm5476044mmx8" path="res://art/bar/Pixel Health Bar/Bar/empty health bar.png" id="1_74t8q"]
 [ext_resource type="Script" uid="uid://by5ktdfw2mmlr" path="res://stats.gd" id="1_adv4l"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cafwryik8lfug" path="res://art/Sprites/Sprite-0003.png" id="4_r4or0"]
 [ext_resource type="Texture2D" uid="uid://yutf5icyp7uf" path="res://art/Sprites/Sprite-0002.png" id="5_af2q3"]
 [ext_resource type="Texture2D" uid="uid://bw2u207ym6i6l" path="res://Gold.png" id="6_af2q3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_af2q3"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
 
 [node name="stats" type="CanvasLayer"]
 script = ExtResource("1_adv4l")
@@ -45,3 +49,19 @@ offset_top = 7.0
 offset_right = 126.0
 offset_bottom = 30.0
 text = "0"
+
+[node name="all_coins" type="TextureRect" parent="."]
+offset_left = 974.0
+offset_top = 3.0
+offset_right = 1014.0
+offset_bottom = 43.0
+texture = ExtResource("6_af2q3")
+
+[node name="status" type="Label" parent="all_coins"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 7.0
+offset_right = 172.0
+offset_bottom = 30.0
+label_settings = SubResource("LabelSettings_af2q3")
+vertical_alignment = 1

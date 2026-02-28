@@ -1,7 +1,8 @@
-ColorRect
-GridContainer
+AnimatedSprite2D
 Label
 TextureRect
+ColorRect
+GridContainer
 Control
 CanvasLayer
 PanelContainer

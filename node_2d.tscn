@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://bgsovrw6560da"]
+[gd_scene load_steps=60 format=4 uid="uid://bgsovrw6560da"]
 
 [ext_resource type="Script" uid="uid://blewsvsx54nhv" path="res://node_2d.gd" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://du6fkhgr3jg2k" path="res://character_body_2d.tscn" id="1_wtcfe"]
@@ -30,6 +30,8 @@
 [ext_resource type="Script" uid="uid://dvedv68ane26e" path="res://polygon_2d.gd" id="16_24dk6"]
 [ext_resource type="PackedScene" uid="uid://dobor5tf5t353" path="res://tree_main_scene.tscn" id="18_k73cj"]
 [ext_resource type="Texture2D" uid="uid://bc071u21dupak" path="res://art/craftpix-net-846754-free-green-zone-tileset-pixel-art/4 Animated objects/Fountain.png" id="19_fs4d3"]
+[ext_resource type="Texture2D" uid="uid://byi52uhsiipa7" path="res://art/SpritesKings/08-Box/Idle.png" id="31_24dk6"]
+[ext_resource type="Texture2D" uid="uid://bmqw3acsofu6p" path="res://art/windmill.png" id="32_mryly"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vxoj"]
 atlas = ExtResource("19_fs4d3")
@@ -1262,6 +1264,8 @@ scenes/1/scene = ExtResource("14_e8dv2")
 [sub_resource type="TileSet" id="TileSet_0hol4"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "coins"
+custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_k73cj")
 sources/3 = SubResource("TileSetAtlasSource_rjqkl")
 sources/1 = SubResource("TileSetAtlasSource_fs4d3")
@@ -1353,6 +1357,42 @@ func _on_timer_timeout():
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kdubu"]
 polygon = PackedVector2Array(30, 408, 486, 415, 1087, 412, 1088, 388, 937, 388, 829, 399, 695, 398, 494, 391, 486, 406, 299, 403, 95, 403, 94, 390, 47, 390, 28, 390)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1c5"]
+atlas = ExtResource("32_mryly")
+region = Rect2(0, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ornx7"]
+atlas = ExtResource("32_mryly")
+region = Rect2(64, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnnru"]
+atlas = ExtResource("32_mryly")
+region = Rect2(128, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_540hr"]
+atlas = ExtResource("32_mryly")
+region = Rect2(192, 0, 64, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ip5v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq1c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ornx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnnru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_540hr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Level" type="Node2D"]
 position = Vector2(2, -1)
 script = ExtResource("1_q6r6c")
@@ -1416,7 +1456,6 @@ position = Vector2(326, 396)
 texture = ExtResource("8_e8dv2")
 
 [node name="Field3" type="TextureRect" parent="BUSH" node_paths=PackedStringArray("player_node")]
-visible = false
 z_index = 4
 material = SubResource("ShaderMaterial_mryly")
 offset_left = -1428.0
@@ -1591,6 +1630,7 @@ texture_progress = ExtResource("8_ir8iy")
 size_flags_stretch_ratio = 2.14
 
 [node name="Collect" type="Node2D" parent="."]
+visible = false
 script = SubResource("GDScript_kdubu")
 
 [node name="Timer" type="Timer" parent="Collect"]
@@ -1627,6 +1667,25 @@ occluder = SubResource("OccluderPolygon2D_kdubu")
 stream = ExtResource("10_ir8iy")
 volume_db = -9.694
 autoplay = true
+
+[node name="box" type="TextureRect" parent="."]
+visible = false
+top_level = true
+z_index = 1
+offset_left = 1082.0
+offset_top = 64.0
+offset_right = 1104.0
+offset_bottom = 83.0
+texture = ExtResource("31_24dk6")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+top_level = true
+z_index = 3
+position = Vector2(-1148, 320)
+scale = Vector2(2.26563, 2.26563)
+sprite_frames = SubResource("SpriteFrames_6ip5v")
+autoplay = "default"
+frame_progress = 0.209005
 
 [connection signal="timeout" from="Collect/Timer" to="Collect" method="_on_timer_timeout"]
 [connection signal="timeout" from="DayNight" to="." method="_on_day_night_timeout"]

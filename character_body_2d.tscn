@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://du6fkhgr3jg2k"]
+[gd_scene load_steps=112 format=3 uid="uid://du6fkhgr3jg2k"]
 
 [ext_resource type="Script" uid="uid://bsgobnoxc5oab" path="res://character_body_2d.gd" id="1_1kp85"]
 [ext_resource type="Texture2D" uid="uid://ds3j44fc0f0xu" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/RUN.png" id="1_lhvu3"]
@@ -1137,6 +1137,10 @@ streams_count = 2
 stream_0/stream = ExtResource("22_skrk8")
 stream_1/stream = ExtResource("23_ye16i")
 
+[sub_resource type="LabelSettings" id="LabelSettings_skrk8"]
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+
 [node name="Playes" type="CharacterBody2D"]
 z_index = 3
 collision_layer = 2
@@ -1208,6 +1212,15 @@ stream = ExtResource("21_2u5n8")
 stream = SubResource("AudioStreamRandomizer_75u2t")
 volume_db = -10.0
 pitch_scale = 0.88
+
+[node name="ui" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -23.0
+offset_right = 147.0
+scale = Vector2(0.44, 0.44)
+label_settings = SubResource("LabelSettings_skrk8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="AttackDirection/DamageBox/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="AttackDirection/DamageBox/HurtBox" to="." method="_on_hurt_box_area_exited"]

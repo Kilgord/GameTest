@@ -4,6 +4,7 @@ extends Node2D
 @onready var animPlayer = $CanvasLayer/AnimationPlayer
 @onready var player = $Player/CharacterBody2D
 
+
 enum {
 	MORNING,
 	DAY,
@@ -13,9 +14,16 @@ enum {
 
 var state = MORNING
 
+
 func _ready() -> void:
 	light.enabled = true
-
+	# Ждем один кадр, чтобы TileMap успел расставить сцены монет
+	await get_tree().process_frame 
+	
+	var coins_nodes = get_tree().get_nodes_in_group("coin")
+	var total_coins = coins_nodes.size()
+	print("Всего монет-объектов на уровне: ", total_coins)
+	Signals.all_coins.emit(total_coins)
 
 	
 			

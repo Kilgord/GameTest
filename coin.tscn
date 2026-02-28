@@ -71,7 +71,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5gmh"]
 radius = 9.0
 
-[node name="Coin" type="AnimatedSprite2D"]
+[node name="Coin" type="AnimatedSprite2D" groups=["coin"]]
 sprite_frames = SubResource("SpriteFrames_v1mwu")
 autoplay = "default"
 frame = 3
