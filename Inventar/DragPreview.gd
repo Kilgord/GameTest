@@ -7,7 +7,9 @@ var dragged_item = {} : set = set_dragged_item
 
 func _process(delta):
 	if dragged_item:
-		position = get_global_mouse_position()
+		var mouse_pos = get_global_mouse_position()
+		# Центрируем узел относительно курсора
+		global_position = mouse_pos - size / 2
 
 func set_dragged_item(item):
 	dragged_item = item

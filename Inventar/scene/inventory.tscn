@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cilsxn6f16m2a"]
+[gd_scene load_steps=4 format=3 uid="uid://cilsxn6f16m2a"]
 
 [ext_resource type="Script" uid="uid://b5qmoftxh6jjq" path="res://Inventar/InventoryMenu.gd" id="1_8eb07"]
+[ext_resource type="Texture2D" uid="uid://ciodvkvx1td3l" path="res://shop/GUI_shop_item_price_for_one.png" id="1_edv76"]
 [ext_resource type="PackedScene" uid="uid://dkb4v0pol51id" path="res://Inventar/scene/drag_preview.tscn" id="2_mu2dy"]
 
 [node name="Inventory" type="Control"]
@@ -16,14 +17,21 @@ offset_bottom = 6.008
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.983679)
+metadata/_edit_horizontal_guides_ = [17.0]
 
 [node name="InventoryContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -126.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InventoryContainer"]
+position = Vector2(338.25, 185.02)
+scale = Vector2(8.54375, 11.9732)
+texture = ExtResource("1_edv76")
 
 [node name="InventoryMenu" type="GridContainer" parent="InventoryContainer"]
 layout_mode = 2

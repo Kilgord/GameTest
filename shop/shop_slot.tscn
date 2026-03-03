@@ -19,21 +19,31 @@ texture = ExtResource("3_wwlif")
 [sub_resource type="LabelSettings" id="LabelSettings_e7ujn"]
 font = ExtResource("4_3vrfu")
 font_size = 14
+font_color = Color(0.259362, 0.171077, 0.038262, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cditi"]
 texture = ExtResource("4_e7ujn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ucsxy"]
+font = ExtResource("4_3vrfu")
+font_size = 36
+font_color = Color(0.258824, 0.172549, 0.0392157, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vrfu"]
 texture = ExtResource("5_ucsxy")
 
 [sub_resource type="LabelSettings" id="LabelSettings_6kl88"]
+font = ExtResource("4_3vrfu")
+font_size = 36
+font_color = Color(0.258824, 0.172549, 0.0392157, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kl88"]
 texture = ExtResource("9_3vrfu")
 
 [sub_resource type="LabelSettings" id="LabelSettings_yd3pc"]
+font = ExtResource("4_3vrfu")
+font_size = 36
+font_color = Color(0.258824, 0.172549, 0.0392157, 1)
 
 [node name="ItemRect" type="ColorRect" groups=["items_slot"]]
 custom_minimum_size = Vector2(50, 50)
