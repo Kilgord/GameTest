@@ -2,15 +2,17 @@ extends Control
 
 @onready var item_icon = $Item/ItemIcon
 @onready var item_quantity = $Item/Count
+@onready var item_drag= $"."
 
 var dragged_item = {} : set = set_dragged_item
 
 func _process(delta):
 	if dragged_item:
-		var mouse_pos = get_global_mouse_position()
+		var position= get_global_mouse_position()
 		# Центрируем узел относительно курсора
-		global_position = mouse_pos - size / 2
-
+		item_drag.global_position = position- size
+	
+		#print(item_drag.global_position)
 func set_dragged_item(item):
 	dragged_item = item
 	if dragged_item:

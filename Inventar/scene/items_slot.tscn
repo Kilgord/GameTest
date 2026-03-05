@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://brmordccu1eey"]
+[gd_scene load_steps=5 format=3 uid="uid://brmordccu1eey"]
 
 [ext_resource type="Script" uid="uid://c1hqf538g7uro" path="res://Inventar/items_slot.gd" id="1_wrnv7"]
 [ext_resource type="Texture2D" uid="uid://tpr08a28jox" path="res://panel_brown.png" id="2_66mr5"]
 
+[sub_resource type="FontFile" id="FontFile_66mr5"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_f6an5"]
+font = SubResource("FontFile_66mr5")
 font_color = Color(0, 0, 0, 1)
 
 [node name="ItemRect" type="ColorRect" groups=["items_slot"]]

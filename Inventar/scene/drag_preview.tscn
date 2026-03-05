@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkb4v0pol51id"]
+[gd_scene load_steps=3 format=3 uid="uid://dkb4v0pol51id"]
 
 [ext_resource type="Script" uid="uid://b7suonvdww5em" path="res://Inventar/DragPreview.gd" id="1_n7sj2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7sj2"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="DragPreview" type="Control"]
 custom_minimum_size = Vector2(58, 58)
@@ -37,8 +40,8 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Item"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 58.0
+offset_bottom = 58.0
 color = Color(1, 1, 1, 0)
 
 [node name="ItemIcon" type="TextureRect" parent="Item"]
@@ -70,4 +73,5 @@ offset_right = 11.484
 offset_bottom = 11.484
 grow_horizontal = 0
 grow_vertical = 0
+label_settings = SubResource("LabelSettings_n7sj2")
 horizontal_alignment = 2

@@ -29,7 +29,7 @@ offset_bottom = -0.0540161
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="InventoryMenu" parent="Inventory/InventoryContainer" index="0"]
+[node name="InventoryMenu" parent="Inventory/InventoryContainer" index="1"]
 columns = 1
 
 [editable path="Inventory"]
