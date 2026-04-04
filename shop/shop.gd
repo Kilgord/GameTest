@@ -8,7 +8,7 @@ var dialog_instance = null
 func _ready() -> void:
 	body_entered.connect(body_in_shop)
 	body_exited.connect(body_out_shop)
-	Signals.connect("player_dialog_knopka", Callable(self, "_on_e_pressed"))
+	Signals.connect("player_dialog_shop", Callable(self, "_on_e_pressed"))
 	
 func body_in_shop(body: Node) -> void:
 	if body.name == "CharacterBody2D":

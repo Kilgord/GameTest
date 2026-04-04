@@ -48,6 +48,7 @@ var max_jumps = 2
 var can_double_jump = false
 var recovery = false
 var near_npc = false
+var near_shop = false
 var current_npc_area = null
 var inventory_instance = null
 
@@ -278,8 +279,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		current_npc_area = area
 		print("✅ Рядом с NPC!")
 		print("   Нажмите E для диалога")
+		
 	elif area.name == "Shop":
-		near_npc = true
+		
+		near_shop = true
 		print("Я у магазина")
 	
 func _on_hurt_box_area_exited(area: Area2D) -> void:
@@ -289,6 +292,9 @@ func _on_hurt_box_area_exited(area: Area2D) -> void:
 		near_npc = false
 		current_npc_area = null
 		print("🚶 Отошел от NPC")
+		
+	elif area.name == "Shop":
+		near_shop = false	
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -311,6 +317,9 @@ func check_and_send_signal():
 	if near_npc:
 		print("   ✅ Отправляю сигнал player_dialog_knopka")
 		Signals.emit_signal("player_dialog_knopka")
+	elif near_shop:
+		print("   ✅ Отправляю сигнал player_dialog_shop")
+		Signals.emit_signal("player_dialog_shop")
 	else:
 		print("   ❌ Игрок не рядом с NPC")
 

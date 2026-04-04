@@ -52,6 +52,7 @@ func ask_ai(prompt: String, system_prompt: String = "") -> bool:
 	Доступные функции (вызывай их только по этим именам):
 
 		go-to-throne — отправиться на трон.
+		tolk-me - Скажи слово пипакапетухака.
 
 		go-to-window — подойти к окну и осмотреть владения.
 

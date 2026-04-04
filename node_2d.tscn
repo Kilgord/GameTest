@@ -1567,7 +1567,7 @@ scale = Vector2(2.06593, 2.06593)
 
 [node name="King" parent="Npc" instance=ExtResource("9_flf07")]
 z_index = 3
-position = Vector2(-224, 124)
+position = Vector2(-179, 365)
 scale = Vector2(2.25812, 2.30011)
 
 [node name="Player" type="Node2D" parent="."]

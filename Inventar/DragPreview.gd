@@ -12,7 +12,6 @@ func _process(delta):
 		# Центрируем узел относительно курсора
 		item_drag.global_position = position- size
 	
-		#print(item_drag.global_position)
 func set_dragged_item(item):
 	dragged_item = item
 	if dragged_item:

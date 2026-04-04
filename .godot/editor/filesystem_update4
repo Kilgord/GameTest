@@ -10,4 +10,6 @@ res://node_2d.tscn
 res://stats.tscn
 res://character_body_2d.tscn
 res://Inventar/scene/drag_preview.tscn
-res://Inventar/DragPreview.gd
+res://king.tscn
+res://AI/ai_assistant.gd
+res://king.gd
